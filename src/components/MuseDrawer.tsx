@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { MessageCircle, Send, X } from "lucide-react";
@@ -21,6 +22,7 @@ function messageText(message: { parts?: Array<{ type: string; text?: string }> }
 }
 
 export function MuseDrawer() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const endRef = useRef<HTMLDivElement>(null);
@@ -56,6 +58,10 @@ export function MuseDrawer() {
     if (busy) return;
     sendMessage({ text });
   };
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>
