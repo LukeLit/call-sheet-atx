@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { hero, site } from "@/data/content";
-import { SceneMark } from "@/components/SceneMark";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -22,12 +21,9 @@ export function Hero() {
           variants={{ show: { transition: { staggerChildren: 0.1 } } }}
           className="max-w-3xl"
         >
-          <motion.div variants={fade}>
-            <SceneMark scene={hero.scene} slug={hero.slug} />
-          </motion.div>
           <motion.p
             variants={fade}
-            className="mt-6 text-[11px] font-medium uppercase tracking-sheet text-amber"
+            className="text-[11px] font-medium uppercase tracking-sheet text-amber"
           >
             {hero.kicker}
           </motion.p>

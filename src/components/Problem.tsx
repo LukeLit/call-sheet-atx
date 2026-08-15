@@ -1,14 +1,12 @@
 import { problem } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
-import { SceneMark } from "@/components/SceneMark";
 
 export function Problem() {
   return (
     <section id="problem" className="border-t border-ink/10">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <Reveal>
-          <SceneMark scene={problem.scene} slug={problem.slug} />
-          <h2 className="mt-6 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
+          <h2 className="max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
             {problem.title}
           </h2>
           <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-ink/75 sm:text-lg">

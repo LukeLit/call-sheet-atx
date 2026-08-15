@@ -1,6 +1,5 @@
 import { map } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
-import { SceneMark } from "@/components/SceneMark";
 import { cn } from "@/lib/cn";
 
 export function Map() {
@@ -8,8 +7,7 @@ export function Map() {
     <section id="map" className="border-t border-ink/10">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <Reveal>
-          <SceneMark scene={map.scene} slug={map.slug} />
-          <h2 className="mt-6 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
+          <h2 className="max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
             {map.title}
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">

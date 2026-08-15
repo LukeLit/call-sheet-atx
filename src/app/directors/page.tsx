@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PhotoBand } from "@/components/PhotoBand";
 import { Reveal } from "@/components/Reveal";
-import { SceneMark } from "@/components/SceneMark";
 import { contact, directors, directorsNavItem, photos, site } from "@/data/content";
 import { cn } from "@/lib/cn";
 
@@ -21,8 +20,7 @@ export default function DirectorsPage() {
       <main>
         <section className="mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
           <Reveal>
-            <SceneMark scene={directors.scene} slug={directors.slug} />
-            <p className="mt-6 text-[11px] font-medium uppercase tracking-sheet text-amber">
+            <p className="text-[11px] font-medium uppercase tracking-sheet text-amber">
               {directors.kicker}
             </p>
             <h1 className="mt-4 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-6xl">
@@ -41,8 +39,7 @@ export default function DirectorsPage() {
         <section className="border-t border-ink/10">
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
             <Reveal>
-              <SceneMark scene="02" slug="Three seats" />
-              <h2 className="mt-6 max-w-2xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
+              <h2 className="max-w-2xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
                 Texas wants three.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg">
@@ -64,8 +61,7 @@ export default function DirectorsPage() {
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
             <Reveal>
               <div className="border border-ink/10 bg-paper-50 px-6 py-10 sm:px-12 sm:py-14">
-                <SceneMark scene="03" slug="Next" />
-                <h2 className="mt-6 max-w-2xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
+                <h2 className="max-w-2xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
                   {directors.next.title}
                 </h2>
                 <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/75 sm:text-lg">
