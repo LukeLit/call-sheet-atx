@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Call Sheet ATX — the call sheet for Austin artists";
+export const alt = "Call Sheet ATX — grants and programs for artists";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
             opacity: 0.55,
           }}
         >
-          <span>Austin, TX</span>
+          <span>Starting in Austin</span>
           <span>Muse</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
             Call Sheet ATX
           </div>
           <div style={{ marginTop: 28, fontSize: 28, maxWidth: 760, lineHeight: 1.3, opacity: 0.85 }}>
-            The call sheet for Austin artists looking for grants and programs.
+            Find the grants and programs that already exist — and get through them.
           </div>
         </div>
       </div>

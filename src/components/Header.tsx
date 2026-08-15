@@ -6,7 +6,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3.5 sm:px-8">
         <a href="#top" className="flex items-baseline gap-3">
           <span className="font-display text-lg tracking-tight text-paper sm:text-xl">
-            {site.legalName}
+            {site.wordmark}
           </span>
           <span className="hidden text-[10px] font-medium uppercase tracking-sheet text-paper/45 sm:inline">
             {site.product}

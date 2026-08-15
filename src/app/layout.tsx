@@ -17,29 +17,29 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${site.legalName} — the call sheet for Austin artists`,
+  title: `${site.wordmark} — grants and programs for artists`,
   description: site.tagline,
-  applicationName: site.legalName,
+  applicationName: site.wordmark,
   authors: [{ name: site.founder }],
   keywords: [
     "Call Sheet ATX",
     "Muse",
-    "Austin artists",
-    "grants",
+    "artist grants",
     "musicians",
+    "Austin",
     "nonprofit",
   ],
   openGraph: {
-    title: site.legalName,
+    title: site.wordmark,
     description: site.tagline,
     url: "https://csa.ironreach.xyz",
-    siteName: site.legalName,
+    siteName: site.wordmark,
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: site.legalName,
+    title: site.wordmark,
     description: site.tagline,
   },
   metadataBase: new URL("https://csa.ironreach.xyz"),

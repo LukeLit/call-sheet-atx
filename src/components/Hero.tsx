@@ -82,13 +82,13 @@ export function Hero() {
             <span className="punch" />
             <span className="punch" />
             <span className="ml-auto text-[10px] font-medium uppercase tracking-sheet text-ink/50">
-              Call sheet
+              Call Sheet ATX
             </span>
           </div>
           <div className="space-y-3 px-4 py-4 text-ink">
-            <Row k="Production" v={site.legalName} />
+            <Row k="Production" v={site.wordmark} />
             <Row k="Assistant" v={site.product} />
-            <Row k="City" v={site.city} />
+            <Row k="First city" v={site.city} />
             <Row k="Founder" v={site.founder} />
             <Row k="Call time" v="Now" />
           </div>

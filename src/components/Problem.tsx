@@ -1,46 +1,36 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { problem } from "@/data/content";
+import { Reveal } from "@/components/Reveal";
 import { SceneMark } from "@/components/SceneMark";
 
 export function Problem() {
   return (
-    <section id="problem" className="paper-grain text-ink">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <SceneMark scene={problem.scene} slug={problem.slug} tone="paper" />
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
-          >
+    <section id="problem" className="border-t border-paper/10">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+        <Reveal>
+          <SceneMark scene={problem.scene} slug={problem.slug} />
+          <h2 className="mt-6 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight text-paper sm:text-5xl">
             {problem.title}
-          </motion.h2>
-          <div className="space-y-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+          </h2>
+          <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-paper/70 sm:text-lg">
             {problem.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
-        </div>
-        <div className="mt-14 grid gap-px bg-ink/10 sm:grid-cols-3">
+        </Reveal>
+
+        <div className="mt-14 grid gap-4 md:grid-cols-3">
           {problem.points.map((point, i) => (
-            <motion.article
-              key={point.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-[#f3ebe0] px-5 py-7 sm:px-6"
-            >
-              <p className="font-mono text-[10px] uppercase tracking-sheet text-ink/40">
-                0{i + 1}
-              </p>
-              <h3 className="mt-3 font-display text-2xl tracking-tight">{point.label}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{point.text}</p>
-            </motion.article>
+            <Reveal key={point.label} delay={0.08 * (i + 1)}>
+              <article className="h-full border border-paper/10 bg-night-100/60 px-5 py-6">
+                <p className="text-[10px] font-medium uppercase tracking-sheet text-amber">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-display text-xl font-medium text-paper">
+                  {point.label}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-paper/65">{point.text}</p>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
