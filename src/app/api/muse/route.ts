@@ -16,10 +16,18 @@ const MODELS = [
   "inclusionai/ling-3.0-flash",
 ] as const;
 
+function isAiSdkGatewayBase(url: string): boolean {
+  const normalized = url.trim().replace(/\/+$/, "");
+  return (
+    normalized.endsWith("/v1/ai") ||
+    normalized.endsWith("/v4/ai") ||
+    normalized.endsWith("/ai")
+  );
+}
+
+const gatewayUrl = process.env.AI_GATEWAY_URL?.trim();
 const gateway = createGateway(
-  process.env.AI_GATEWAY_URL
-    ? { baseURL: process.env.AI_GATEWAY_URL }
-    : {},
+  gatewayUrl && isAiSdkGatewayBase(gatewayUrl) ? { baseURL: gatewayUrl } : {},
 );
 
 type MuseModel = (typeof MODELS)[number];
@@ -47,6 +55,8 @@ function isRetryableGatewayError(error: unknown): boolean {
   if (/\b402\b/.test(text)) return true;
   if (text.includes("model not found") || text.includes("not_found")) return true;
   if (text.includes("does not exist")) return true;
+  if (text.includes("requested resource was not found")) return true;
+  if (text.includes("language-model")) return true;
   if (text.includes("payment required") || text.includes("payment")) return true;
   if (text.includes("insufficient") || text.includes("quota") || text.includes("billing")) return true;
   return false;
@@ -65,7 +75,15 @@ async function startModelStream(
   });
 
   const iterator = result.fullStream[Symbol.asyncIterator]();
-  const first = await iterator.next();
+  let first = await iterator.next();
+
+  while (
+    !first.done &&
+    first.value &&
+    (first.value.type === "start" || first.value.type === "start-step")
+  ) {
+    first = await iterator.next();
+  }
 
   if (first.value && first.value.type === "error") {
     throw first.value.error instanceof Error
