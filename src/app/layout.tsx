@@ -20,12 +20,13 @@ export const metadata: Metadata = {
   title: `${site.wordmark} — Find the support that already exists`,
   description: site.description,
   applicationName: site.wordmark,
-  authors: [{ name: site.founder }],
   keywords: [
     "Open Call",
     "Muse",
     "artist grants",
     "musicians",
+    "HAAM",
+    "Texas Workforce Commission",
     "Austin",
     "nonprofit",
   ],
@@ -58,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-body antialiased night-wash">{children}</body>
+      <body className="font-body antialiased sun-wash">{children}</body>
     </html>
   );
 }

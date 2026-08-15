@@ -10,26 +10,26 @@ const config: Config = {
     extend: {
       colors: {
         night: {
-          DEFAULT: "#100E0C",
+          DEFAULT: "#1C1612",
           50: "#2A241E",
           100: "#1C1814",
         },
         paper: {
-          DEFAULT: "#F3EBE0",
-          50: "#FAF6F0",
-          100: "#E8DCCE",
+          DEFAULT: "#F7F1E6",
+          50: "#FFFBF4",
+          100: "#EDE4D4",
         },
         ink: {
           DEFAULT: "#1C1612",
-          soft: "#5C5248",
-          mute: "#7A7066",
+          soft: "#4A4038",
+          mute: "#6B5F54",
         },
         amber: {
-          DEFAULT: "#E08A3C",
-          dim: "#C46F28",
+          DEFAULT: "#C46F28",
+          dim: "#A85A1C",
         },
         clay: "#C15A45",
-        sage: "#7A9A86",
+        sage: "#5F7F6B",
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
@@ -39,7 +39,7 @@ const config: Config = {
         sheet: "0.18em",
       },
       boxShadow: {
-        sheet: "0 24px 60px -20px rgba(16, 14, 12, 0.55)",
+        sheet: "0 24px 60px -20px rgba(28, 22, 18, 0.28)",
       },
     },
   },

@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#100E0C",
-          color: "#F3EBE0",
+          background: "#F7F1E6",
+          color: "#1C1612",
           padding: "64px 72px",
         }}
       >
@@ -37,8 +37,8 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 84, fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 0.95 }}>
             Open Call
           </div>
-          <div style={{ marginTop: 28, fontSize: 28, maxWidth: 760, lineHeight: 1.3, opacity: 0.85 }}>
-            Artists shouldn&apos;t have to be grant researchers to make a living from their work.
+          <div style={{ marginTop: 28, fontSize: 28, maxWidth: 820, lineHeight: 1.3, opacity: 0.85 }}>
+            Artists shouldn&apos;t have to be grant researchers. The same map covers health, work, and other help.
           </div>
         </div>
       </div>

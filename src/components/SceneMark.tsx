@@ -6,12 +6,12 @@ type SceneMarkProps = {
   tone?: "night" | "paper";
 };
 
-export function SceneMark({ scene, slug, tone = "night" }: SceneMarkProps) {
+export function SceneMark({ scene, slug, tone = "paper" }: SceneMarkProps) {
   return (
     <div
       className={cn(
         "flex items-center gap-3 text-[11px] font-medium uppercase tracking-sheet",
-        tone === "paper" ? "text-ink/50" : "text-paper/45",
+        tone === "paper" ? "text-ink/50" : "text-paper/70",
       )}
     >
       <span>Scene {scene}</span>

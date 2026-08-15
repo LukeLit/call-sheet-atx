@@ -1,10 +1,3 @@
-# Open Call
-
-Artists should not have to be grant researchers to make a living from their work. Muse is the assistant.
-
-Public and legal name: Open Call. Assistant: Muse. Texas nonprofit in formation. First city: Austin. The product is built to travel.
-
-Grants and the workbench are the main draw. Muse also maps health programs (including HAAM), TWC and other work help, small-business grants, and programs most people never hear about. We do not write checks.
 # Photographs
 
 Stills live in public/images/ and are not hotlinked.

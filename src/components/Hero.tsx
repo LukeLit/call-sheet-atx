@@ -33,13 +33,13 @@ export function Hero() {
           </motion.p>
           <motion.h1
             variants={fade}
-            className="mt-4 font-display text-[3.2rem] font-medium leading-[0.95] tracking-tight text-paper sm:text-7xl md:text-8xl"
+            className="mt-4 font-display text-[3.2rem] font-medium leading-[0.95] tracking-tight text-ink sm:text-7xl md:text-8xl"
           >
             {hero.title}
           </motion.h1>
           <motion.p
             variants={fade}
-            className="mt-8 max-w-xl text-xl leading-snug text-paper/85 sm:text-2xl"
+            className="mt-8 max-w-xl text-xl leading-snug text-ink/85 sm:text-2xl"
           >
             {hero.lede}
           </motion.p>
@@ -51,22 +51,22 @@ export function Hero() {
           </motion.p>
           <motion.p
             variants={fade}
-            className="mt-6 max-w-lg text-base leading-relaxed text-paper/65 sm:text-lg"
+            className="mt-6 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg"
           >
             {hero.body}
           </motion.p>
           <motion.div variants={fade} className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href={contact.mailto}
-              className="rounded-full bg-amber px-5 py-2.5 text-sm font-medium text-night transition hover:bg-amber-dim"
+              href={contact.href}
+              className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-night-50"
             >
-              {contact.label} / join as a founding director
+              Join as a founding director
             </a>
             <a
-              href="#platform"
-              className="rounded-full border border-paper/25 px-5 py-2.5 text-sm text-paper/80 transition hover:border-paper/50 hover:text-paper"
+              href="#map"
+              className="rounded-full border border-ink/20 px-5 py-2.5 text-sm text-ink/80 transition hover:border-ink/45 hover:text-ink"
             >
-              See the platform
+              See the map
             </a>
           </motion.div>
         </motion.div>
@@ -89,7 +89,6 @@ export function Hero() {
             <Row k="Production" v={site.wordmark} />
             <Row k="Assistant" v={site.product} />
             <Row k="First city" v={site.city} />
-            <Row k="Founder" v={site.founder} />
             <Row k="Call time" v="Now" />
           </div>
         </motion.aside>
