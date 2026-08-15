@@ -43,16 +43,28 @@ function errorText(error: unknown): string {
   return String(error);
 }
 
+function gatewayErrorStatus(error: unknown): number | undefined {
+  if (!error || typeof error !== "object") return undefined;
+  const record = error as { status?: unknown; statusCode?: unknown };
+  const raw = record.status ?? record.statusCode;
+  const status = Number(raw);
+  return Number.isFinite(status) ? status : undefined;
+}
+
 function isRetryableGatewayError(error: unknown): boolean {
   if (GatewayModelNotFoundError.isInstance(error)) return true;
-  const status =
-    error && typeof error === "object" && "statusCode" in error
-      ? Number((error as { statusCode?: number }).statusCode)
-      : undefined;
-  if (status === 404 || status === 402) return true;
+  const status = gatewayErrorStatus(error);
+  if (status === 404 || status === 402 || status === 429 || status === 408) return true;
+  if (status !== undefined && status >= 500 && status <= 599) return true;
   const text = errorText(error).toLowerCase();
   if (/\b404\b/.test(text)) return true;
   if (/\b402\b/.test(text)) return true;
+  if (/\b429\b/.test(text)) return true;
+  if (/\b408\b/.test(text)) return true;
+  if (text.includes("too many requests")) return true;
+  if (text.includes("rate limit") || text.includes("rate_limit")) return true;
+  if (text.includes("throttl")) return true;
+  if (text.includes("resource exhausted")) return true;
   if (text.includes("model not found") || text.includes("not_found")) return true;
   if (text.includes("does not exist")) return true;
   if (text.includes("requested resource was not found")) return true;
@@ -86,9 +98,10 @@ async function startModelStream(
   }
 
   if (first.value && first.value.type === "error") {
-    throw first.value.error instanceof Error
-      ? first.value.error
-      : new Error(String(first.value.error ?? `${model} stream error`));
+    const err = first.value.error;
+    if (err instanceof Error) throw err;
+    if (err && typeof err === "object") throw err;
+    throw new Error(String(err ?? `${model} stream error`));
   }
 
   return result;
