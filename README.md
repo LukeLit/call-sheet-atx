@@ -1,6 +1,6 @@
 # Open Call
 
-Find the grants and programs that already exist — and get through them. **Muse** is the assistant.
+Artists shouldn't have to be grant researchers to make a living from their work. **Muse** is the assistant.
 
 Public and legal name: **Open Call**. Assistant: **Muse**. Texas nonprofit in formation. First city: Austin. The product is built to travel.
 

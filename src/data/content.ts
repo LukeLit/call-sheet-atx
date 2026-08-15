@@ -5,7 +5,9 @@ export const site = {
   founder: "Luke Litman",
   city: "Austin, TX",
   productionUrl: "csa.ironreach.xyz",
-  tagline: "Find the grants and programs that already exist — and get through them.",
+  tagline: "Artists shouldn't have to be grant researchers to make a living from their work.",
+  description:
+    "Open Call helps artists find and apply to grants, fellowships, and residencies that already exist. Muse is the assistant. Austin first. Built for everywhere. We do not write artists checks.",
 };
 
 /**
@@ -28,11 +30,11 @@ export const nav = [
 export const hero = {
   scene: "01",
   slug: "Hero",
-  kicker: "Starting in Austin  ·  Built to travel",
+  kicker: "Starting in Austin. Built to go anywhere.",
   title: "Open Call",
-  lede: "For artists looking for grants and programs.",
+  lede: "Artists shouldn't have to be grant researchers to make a living from their work.",
   muse: "Muse is the assistant.",
-  body: "We help artists find the grants and programs that already exist — and get through them — so they can make a living from their art. Austin is the first city we are standing up.",
+  body: "Open Call finds the programs that already exist. Muse helps you get through them. First city: Austin. Then anywhere.",
 };
 
 export const problem = {
@@ -40,8 +42,8 @@ export const problem = {
   slug: "The gap",
   title: "The programs exist. The map does not.",
   body: [
-    "Grants, fellowships, residencies, and city programs already exist. Artists — especially musicians — still miss them. Not because they aren’t working. Because the list is scattered, the language is a maze, and nobody’s job is to walk you through it.",
-    "Making a living from your art is the point. Navigation shouldn’t be the second job. We start in Austin. The product is built to go further.",
+    "Foundations, cities, states, and private programs already fund artists. The work is finding the ones that fit you, before the deadline.",
+    "Deadlines hide in PDFs. Eligibility is a maze. Most artists hear about a grant after it closed. That is not a talent problem. That is a navigation problem.",
   ],
   points: [
     {
@@ -54,7 +56,7 @@ export const problem = {
     },
     {
       label: "What we are not",
-      text: "We are not writing you a check. We find the open call — then stay with you through it.",
+      text: "We do not write artists checks. We navigate, match, teach, and refer. If a program already exists and it fits you, we help you get to it.",
     },
   ],
 };
@@ -63,25 +65,25 @@ export const platform = {
   scene: "03",
   slug: "The platform",
   title: "Three surfaces. One product.",
-  lede: "Open Call is the platform. Muse is how artists meet it. This is the product — not a brochure around a future idea.",
+  lede: "Open Call is the platform. Muse is how artists meet it. Muse, the artist app, and the ops desk. One job: get the right program in front of the right artist, in time.",
   surfaces: [
     {
       id: "muse",
       name: "Muse",
       role: "The assistant",
-      text: "A chat that knows the landscape. Ask what you need. Get a match, a next step, and a plain-English read of the form.",
+      text: "The artist-facing assistant. You talk about the work, the city, the moment you are in. Muse finds fits, explains eligibility in plain language, and walks the next step.",
     },
     {
       id: "app",
       name: "Artist app",
       role: "Profiles + matches",
-      text: "A simple frontend. Your profile, your matches, the programs that actually fit. Not another social network.",
+      text: "Your profile, your matches, your deadlines, and the applications you already started. A place to see what is open and what is actually for you.",
     },
     {
       id: "ops",
       name: "Ops desk",
       role: "The grants database",
-      text: "The living list. Someone has to keep the programs honest and current. That is the desk.",
+      text: "The human side. Real people keep the program list honest, review matches, and step in when a person should answer.",
     },
   ],
 };
@@ -91,8 +93,8 @@ export const ask = {
   slug: "The ask",
   title: "We need founding directors.",
   body: [
-    "Open Call is forming as a Texas nonprofit. The mission is simple: connect artists to grants and other existing programs so they can make a living from their art. Austin is the first market — not the ceiling.",
-    "This is governance, not a full-time job. A few meetings. A clear mission. Your name on the papers. Help keep the work honest while Muse goes to work.",
+    "Open Call is forming as a Texas nonprofit. The product is global. The legal home is Texas. The first market is Austin.",
+    "This is governance, not a job. A few meetings. A clear mission. Your name on the papers. You are not being asked for money, a logo, or to run Muse.",
   ],
   cta: "Join as a founding director",
 };
@@ -102,5 +104,6 @@ export const footer = {
   legal: "Open Call",
   product: "Muse",
   wordmark: "Open Call",
-  note: "Navigation, matching, education, referral. Not a check-writing shop.",
+  line: "Open Call · Muse · Austin first, then everywhere",
+  note: "Navigation, matching, education, referral. We do not write artists checks.",
 };

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Open Call — grants and programs for artists";
+export const alt = "Open Call — Find the support that already exists";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
             Open Call
           </div>
           <div style={{ marginTop: 28, fontSize: 28, maxWidth: 760, lineHeight: 1.3, opacity: 0.85 }}>
-            Find the grants and programs that already exist — and get through them.
+            Artists shouldn&apos;t have to be grant researchers to make a living from their work.
           </div>
         </div>
       </div>

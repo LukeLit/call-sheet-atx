@@ -17,8 +17,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${site.wordmark} — grants and programs for artists`,
-  description: site.tagline,
+  title: `${site.wordmark} — Find the support that already exists`,
+  description: site.description,
   applicationName: site.wordmark,
   authors: [{ name: site.founder }],
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: site.wordmark,
-    description: site.tagline,
+    description: site.description,
     url: "https://csa.ironreach.xyz",
     siteName: site.wordmark,
     locale: "en_US",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: site.wordmark,
-    description: site.tagline,
+    description: site.description,
   },
   metadataBase: new URL("https://csa.ironreach.xyz"),
 };

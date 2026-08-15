@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <p className="font-display text-xl tracking-tight text-paper">{footer.wordmark}</p>
           <p className="mt-2 text-sm text-paper/55">
-            {footer.city} · first city · {footer.product}
+            {footer.line}
           </p>
         </div>
         <div className="text-sm text-paper/45 sm:text-right">
