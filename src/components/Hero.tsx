@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { hero, site } from "@/data/content";
+import { MuseAsk } from "@/components/MuseAsk";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -58,6 +59,10 @@ export function Hero() {
             >
               {hero.primaryCta.label}
             </a>
+            <MuseAsk
+              prompt="What city of Austin grants are open right now for a working musician?"
+              label="Ask Muse"
+            />
             <a
               href={hero.secondaryCta.href}
               className="rounded-full border border-ink/20 px-5 py-2.5 text-sm text-ink/80 transition hover:border-ink/45 hover:text-ink"

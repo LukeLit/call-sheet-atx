@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Send, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { pickFollowUps, STARTERS } from "@/lib/muse/suggestions";
+import { MUSE_OPEN_EVENT } from "@/lib/muse/open";
 
 function messageText(message: { parts?: Array<{ type: string; text?: string }> }) {
   if (!message.parts) return "";
@@ -54,6 +55,10 @@ export function MuseDrawer() {
   });
 
   const busy = status === "submitted" || status === "streaming";
+  const busyRef = useRef(busy);
+  const sendRef = useRef(sendMessage);
+  busyRef.current = busy;
+  sendRef.current = sendMessage;
 
   const lastAssistantIndex = lastIndexOfRole(messages, "assistant");
   const lastUserIndex = lastIndexOfRole(messages, "user");
@@ -89,6 +94,27 @@ export function MuseDrawer() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  useEffect(() => {
+    let timer: number | undefined;
+    const onOpen = (event: Event) => {
+      const detail = (event as CustomEvent<{ prompt?: string }>).detail;
+      const prompt =
+        typeof detail?.prompt === "string" ? detail.prompt.trim() : "";
+      setOpen(true);
+      if (!prompt || busyRef.current) return;
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (busyRef.current) return;
+        sendRef.current({ text: prompt });
+      }, 80);
+    };
+    window.addEventListener(MUSE_OPEN_EVENT, onOpen);
+    return () => {
+      window.removeEventListener(MUSE_OPEN_EVENT, onOpen);
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   const submit = (event: FormEvent) => {
     event.preventDefault();

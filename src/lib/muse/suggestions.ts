@@ -4,7 +4,7 @@ export const STARTERS = [
   "How will the grants workbench work?",
 ] as const;
 
-export type TopicId = "haam" | "twc" | "grants" | "business" | "directors";
+export type TopicId = "haam" | "twc" | "grants" | "acme" | "business" | "directors";
 
 export const TOPICS: Array<{
   id: TopicId;
@@ -36,6 +36,25 @@ export const TOPICS: Array<{
       "What kinds of grants fit Austin musicians?",
       "How will the workbench actually match me?",
       "What do I need before I apply?",
+    ],
+  },
+  {
+    id: "acme",
+    keywords: [
+      "acme",
+      "elevate",
+      "thrive",
+      "live music fund",
+      "heritage",
+      "nexus",
+      "city of austin",
+      "cultural arts",
+      "fy27",
+    ],
+    questions: [
+      "Is the Austin Live Music Fund still open?",
+      "What's the ACME deadline?",
+      "What is Elevate for?",
     ],
   },
   {

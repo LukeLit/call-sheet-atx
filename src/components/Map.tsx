@@ -1,6 +1,13 @@
 import { map } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
+import { MuseAsk } from "@/components/MuseAsk";
 import { cn } from "@/lib/cn";
+
+const cardPrompts: Record<string, string> = {
+  grants: "Walk me through the City of Austin ACME grants that are open right now.",
+  health: "Can I join HAAM if I only play a few gigs a month?",
+  work: "What can TWC do if my gigs are uneven and I also work retail?",
+};
 
 export function Map() {
   return (
@@ -45,6 +52,11 @@ export function Map() {
                   <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink/70">
                     {item.text}
                   </p>
+                  {cardPrompts[item.id] ? (
+                    <div className="mt-5">
+                      <MuseAsk prompt={cardPrompts[item.id]} variant="ghost" />
+                    </div>
+                  ) : null}
                 </article>
               </Reveal>
             );

@@ -1,5 +1,6 @@
 import { closer, contact, hero } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
+import { MuseAsk } from "@/components/MuseAsk";
 
 export function Closer() {
   return (
@@ -19,6 +20,10 @@ export function Closer() {
             >
               {hero.primaryCta.label}
             </a>
+            <MuseAsk
+              prompt="I play a few gigs a month in Austin. What should I look at first — grants, HAAM, or TWC?"
+              label="Ask Muse"
+            />
             <a
               href={contact.href}
               className="rounded-full border border-ink/20 px-5 py-2.5 text-sm text-ink/80 transition hover:border-ink/45 hover:text-ink"

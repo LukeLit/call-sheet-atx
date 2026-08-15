@@ -1,6 +1,7 @@
 import { MessageCircle, UserRound, Database } from "lucide-react";
 import { platform } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
+import { MuseAsk } from "@/components/MuseAsk";
 import { cn } from "@/lib/cn";
 
 const icons = {
@@ -65,6 +66,14 @@ export function Platform() {
                   <p className="mt-4 text-sm leading-relaxed text-ink/70">
                     {surface.text}
                   </p>
+                  {featured ? (
+                    <div className="mt-auto pt-5">
+                      <MuseAsk
+                        prompt="What can you actually help me with today?"
+                        label="Talk to Muse"
+                      />
+                    </div>
+                  ) : null}
                 </article>
               </Reveal>
             );

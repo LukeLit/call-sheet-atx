@@ -1,5 +1,6 @@
 import { problem } from "@/data/content";
 import { Reveal } from "@/components/Reveal";
+import { MuseAsk } from "@/components/MuseAsk";
 
 export function Problem() {
   return (
@@ -31,6 +32,13 @@ export function Problem() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.28} className="mt-8">
+          <MuseAsk
+            prompt="Deadlines hide in PDFs. What's actually open in Austin this month?"
+            label="Ask Muse what's open"
+          />
+        </Reveal>
       </div>
     </section>
   );
