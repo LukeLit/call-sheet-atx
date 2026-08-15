@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { site } from "@/data/content";
+import { MuseDrawer } from "@/components/MuseDrawer";
 import "./globals.css";
 
 const inter = Inter({
@@ -59,7 +60,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-body antialiased sun-wash">{children}</body>
+      <body className="font-body antialiased sun-wash">
+        {children}
+        <MuseDrawer />
+      </body>
     </html>
   );
 }
