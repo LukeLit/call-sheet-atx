@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { contact, hero, site } from "@/data/content";
+import { hero, site } from "@/data/content";
 import { SceneMark } from "@/components/SceneMark";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -57,16 +57,22 @@ export function Hero() {
           </motion.p>
           <motion.div variants={fade} className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href={contact.href}
+              href={hero.primaryCta.href}
               className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-night-50"
             >
-              Join as a founding director
+              {hero.primaryCta.label}
             </a>
             <a
-              href="#map"
+              href={hero.secondaryCta.href}
               className="rounded-full border border-ink/20 px-5 py-2.5 text-sm text-ink/80 transition hover:border-ink/45 hover:text-ink"
             >
-              See the map
+              {hero.secondaryCta.label}
+            </a>
+            <a
+              href={hero.tertiaryCta.href}
+              className="text-sm text-ink/60 transition hover:text-ink"
+            >
+              {hero.tertiaryCta.label}
             </a>
           </motion.div>
         </motion.div>

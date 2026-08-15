@@ -10,25 +10,30 @@ export const site = {
     "Open Call helps people find grants, health programs, work help, and other support that already exists. Muse is the assistant. Austin first. Built for everywhere. We do not write checks.",
 };
 
-/**
- * Placeholder contact. Swap `mailto` with a real address on /contact.
- * Do not treat this as a live inbox.
- */
 export const contact = {
   label: "Talk to us",
   href: "/contact",
+  email: "luke.litman@gmail.com",
   mailto:
-    "mailto:REPLACE_WITH_YOUR_EMAIL?subject=Open%20Call%20%E2%80%94%20founding%20director",
-  emailPlaceholder: "REPLACE_WITH_YOUR_EMAIL",
-  placeholderNote: "Placeholder email — swap the address in src/data/content.ts",
+    "mailto:luke.litman@gmail.com?subject=Open%20Call",
+  seatMailto:
+    "mailto:luke.litman@gmail.com?subject=Open%20Call%20%E2%80%94%20I%20want%20the%20seat",
 };
 
+/** Public-sell nav. Home and /contact use this. No directors item. */
 export const nav = [
   { href: "/#problem", label: "The gap" },
   { href: "/#map", label: "The map" },
   { href: "/#platform", label: "The platform" },
-  { href: "/#ask", label: "The ask" },
 ];
+
+/** /directors can show Directors in nav. Home does not. */
+export const directorsNavItem = { href: "/directors", label: "Directors" };
+
+export const directorsLink = {
+  href: "/directors",
+  label: "For founding directors",
+};
 
 export const hero = {
   scene: "01",
@@ -38,6 +43,9 @@ export const hero = {
   lede: "Artists shouldn't have to be grant researchers to make a living from their work.",
   muse: "Muse is the assistant.",
   body: "Grants stay the main draw. The same map covers health, work, and the other help that keeps a gig month together. First city: Austin. Then anywhere.",
+  primaryCta: { href: "#map", label: "See the map" },
+  secondaryCta: { href: "#platform", label: "How it works" },
+  tertiaryCta: { href: "/contact", label: "Talk to us" },
 };
 
 export const problem = {
@@ -141,15 +149,56 @@ export const platform = {
   ],
 };
 
-export const ask = {
-  scene: "05",
-  slug: "The ask",
-  title: "We need founding directors.",
-  body: [
-    "Open Call is forming as a Texas nonprofit. The product is global. The legal home is Texas. The first market is Austin.",
-    "This is governance, not a job. A few meetings. A clear mission. Your name on the papers. You are not being asked for money, a logo, or to run Muse.",
+export const closer = {
+  title: "The work is finding the door.",
+  body: "We navigate, match, teach, and refer. We do not write checks.",
+};
+
+export const directors = {
+  scene: "01",
+  slug: "The seats",
+  kicker: "For the two open seats.",
+  title: "I need two more directors.",
+  spiel: [
+    "I'm forming Open Call. Artists shouldn't have to be grant researchers to make a living from their work. Muse is the assistant. We find the programs that already exist — grants first, then health, work, the rest of a working life. We do not write checks.",
+    "I want this to be a Texas nonprofit. That's the legal home. The product is global. First market is Austin. Austin is where I can show up. It is not the brand.",
+    "Texas wants three people on the papers. I'm one. That leaves two seats. This is governance, not a job. A few meetings. Bylaws, officers, the 501(c)(3) path. Your name on the formation. You keep the work honest.",
+    "I'm not asking for money. Not a logo. Not a public partnership. Not to run Muse. If you want to give later, that's separate. Today the ask is the seat.",
   ],
-  cta: "Join as a founding director",
+  seats: [
+    {
+      id: "1",
+      status: "filled",
+      name: "Luke Litman",
+      role: "Organizer · Director 1",
+      city: "Austin, TX",
+      photo: {
+        src: "/images/luke.png",
+        width: 1600,
+        height: 1600,
+        alt: "Portrait of Luke Litman.",
+      },
+      bio: "Artist, designer, builder. SVA-trained illustrator who spent twenty years in games and creative technology, and 14+ years doing pro-bono work for musicians. He founded Metal Games and IronReach. He is forming Open Call so working artists can find the grants, health programs, and other help that already exist — Muse is the assistant.",
+    },
+    {
+      id: "2",
+      status: "open",
+      name: "Open",
+      role: "Director 2",
+    },
+    {
+      id: "3",
+      status: "open",
+      name: "Open",
+      role: "Director 3",
+    },
+  ],
+  next: {
+    title: "If you want in",
+    body: "Write me. Say you want the seat, who you are, and why you'd be good. That's enough.",
+    cta: "I'm in",
+    hint: "luke.litman@gmail.com",
+  },
 };
 
 export const footer = {

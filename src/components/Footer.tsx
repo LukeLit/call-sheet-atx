@@ -1,4 +1,4 @@
-import { contact, footer, site } from "@/data/content";
+import { contact, directorsLink, footer, site } from "@/data/content";
 
 export function Footer() {
   return (
@@ -13,6 +13,12 @@ export function Footer() {
           <p className="mt-2">
             <a href={contact.href} className="underline-offset-4 hover:underline">
               Contact
+            </a>
+            <span className="mx-2 text-ink/25" aria-hidden>
+              ·
+            </span>
+            <a href={directorsLink.href} className="underline-offset-4 hover:underline">
+              {directorsLink.label}
             </a>
           </p>
           <p className="mt-2 text-[11px] uppercase tracking-sheet text-ink/35">

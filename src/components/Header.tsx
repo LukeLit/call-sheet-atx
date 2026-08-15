@@ -1,6 +1,14 @@
 import { contact, nav, site } from "@/data/content";
 
-export function Header() {
+type NavItem = { href: string; label: string };
+
+type HeaderProps = {
+  extra?: NavItem[];
+};
+
+export function Header({ extra }: HeaderProps) {
+  const items = extra ? [...nav, ...extra] : nav;
+
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3.5 sm:px-8">
@@ -13,7 +21,7 @@ export function Header() {
           </span>
         </a>
         <nav className="flex items-center gap-5 text-sm text-ink/70 sm:gap-7">
-          {nav.map((item) => (
+          {items.map((item) => (
             <a
               key={item.href}
               href={item.href}

@@ -8,3 +8,5 @@ graffiti-park.jpg -- HOPE Outdoor Gallery / Graffiti Park, Austin. Justraveling.
 south-austin-mosaic.jpg -- Public mosaic, South Austin. Carol M. Highsmith. Library of Congress. Public domain.
 
 These are real photographs, not generated images.
+
+luke.png -- Portrait of Luke Litman. From his portfolio (portfolio.ironreach.xyz). Used on /directors (seat 1) and /contact. Not used on the homepage.

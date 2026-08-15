@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { Problem } from "@/components/Problem";
 import { Map } from "@/components/Map";
 import { Platform } from "@/components/Platform";
-import { Ask } from "@/components/Ask";
+import { Closer } from "@/components/Closer";
 import { Footer } from "@/components/Footer";
 import { PhotoBand } from "@/components/PhotoBand";
 import { photos } from "@/data/content";
@@ -21,7 +21,7 @@ export default function HomePage() {
         <PhotoBand photo={photos.mosaic} />
         <Platform />
         <PhotoBand photo={photos.farmersMarket} />
-        <Ask />
+        <Closer />
       </main>
       <Footer />
     </>
