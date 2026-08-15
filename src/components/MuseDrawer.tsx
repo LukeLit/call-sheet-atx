@@ -1,17 +1,12 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { MessageCircle, Send, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-
-const SUGGESTIONS = [
-  "What is HAAM?",
-  "What does TWC help with?",
-  "How will the grants workbench work?",
-];
+import { pickFollowUps, STARTERS } from "@/lib/muse/suggestions";
 
 function messageText(message: { parts?: Array<{ type: string; text?: string }> }) {
   if (!message.parts) return "";
@@ -21,11 +16,22 @@ function messageText(message: { parts?: Array<{ type: string; text?: string }> }
     .join("");
 }
 
+function lastIndexOfRole(
+  messages: Array<{ role: string }>,
+  role: "user" | "assistant",
+) {
+  for (let i = messages.length - 1; i >= 0; i -= 1) {
+    if (messages[i].role === role) return i;
+  }
+  return -1;
+}
+
 export function MuseDrawer() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const endRef = useRef<HTMLDivElement>(null);
+  const previousFollowUpsRef = useRef<string[]>([]);
 
   const { messages, sendMessage, status, error } = useChat({
     transport: new DefaultChatTransport({ api: "/api/muse" }),
@@ -33,9 +39,31 @@ export function MuseDrawer() {
 
   const busy = status === "submitted" || status === "streaming";
 
+  const lastAssistantIndex = lastIndexOfRole(messages, "assistant");
+  const lastUserIndex = lastIndexOfRole(messages, "user");
+  const lastAssistantText =
+    lastAssistantIndex >= 0 ? messageText(messages[lastAssistantIndex]) : "";
+  const lastUserText =
+    lastUserIndex >= 0 ? messageText(messages[lastUserIndex]) : "";
+
+  const followUps = useMemo(() => {
+    if (busy || error || !lastAssistantText) return [];
+    return pickFollowUps(
+      lastUserText,
+      lastAssistantText,
+      previousFollowUpsRef.current,
+    );
+  }, [busy, error, lastAssistantText, lastUserText]);
+
+  useEffect(() => {
+    if (followUps.length === 3) {
+      previousFollowUpsRef.current = followUps;
+    }
+  }, [followUps]);
+
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, status]);
+  }, [messages, status, followUps]);
 
   useEffect(() => {
     if (!open) return;
@@ -131,7 +159,7 @@ export function MuseDrawer() {
                 won&apos;t invent a match. We do not write checks.
               </p>
               <div className="mt-6 flex flex-col items-start gap-2">
-                {SUGGESTIONS.map((text) => (
+                {STARTERS.map((text) => (
                   <button
                     key={text}
                     type="button"
@@ -145,10 +173,17 @@ export function MuseDrawer() {
             </div>
           ) : null}
 
-          {messages.map((message) => {
+          {messages.map((message, index) => {
             const text = messageText(message);
             if (!text && message.role === "user") return null;
             const muse = message.role === "assistant";
+            const showFollowUps =
+              muse &&
+              index === lastAssistantIndex &&
+              !busy &&
+              !error &&
+              Boolean(text) &&
+              followUps.length > 0;
             return (
               <div key={message.id} className={cn("max-w-[90%]", muse ? "mr-auto" : "ml-auto")}>
                 <p className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">
@@ -162,6 +197,20 @@ export function MuseDrawer() {
                 >
                   {text || (busy && muse ? "…" : "")}
                 </p>
+                {showFollowUps ? (
+                  <div className="mt-3 flex flex-col items-start gap-2">
+                    {followUps.map((prompt) => (
+                      <button
+                        key={prompt}
+                        type="button"
+                        onClick={() => ask(prompt)}
+                        className="rounded-full border border-ink/15 px-3 py-1.5 text-left text-sm text-ink/75 transition hover:border-ink/40 hover:text-ink"
+                      >
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             );
           })}
