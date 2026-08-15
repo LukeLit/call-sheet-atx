@@ -16,8 +16,8 @@ If `AI_GATEWAY_URL` is set, Muse passes it to `createGateway` as `baseURL`. The 
 
 Models, in order:
 
-1. `inclusionai/ling-3.0-tiny-free`
-2. If the gateway returns 404, model not found, or a payment error, retry once with `inclusionai/ling-3.0-tiny`
+1. `poolside/laguna-s-2.1-free`
+2. If the gateway returns 404, model not found, or a payment error, retry with `alibaba/qwen3.7-flash`
 3. Last resort: `inclusionai/ling-3.0-flash`
 
 The route is `POST /api/muse`. The server logs which model served.

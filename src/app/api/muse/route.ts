@@ -11,8 +11,8 @@ export const maxDuration = 60;
 export const runtime = "nodejs";
 
 const MODELS = [
-  "inclusionai/ling-3.0-tiny-free",
-  "inclusionai/ling-3.0-tiny",
+  "poolside/laguna-s-2.1-free",
+  "alibaba/qwen3.7-flash",
   "inclusionai/ling-3.0-flash",
 ] as const;
 
