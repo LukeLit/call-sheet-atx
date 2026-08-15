@@ -22,9 +22,9 @@ export const contact = {
 
 /** Public-sell nav. Home and /contact use this. No directors item. */
 export const nav = [
-  { href: "/#problem", label: "The gap" },
-  { href: "/#map", label: "The map" },
-  { href: "/#platform", label: "The platform" },
+  { href: "/#problem", label: "Why" },
+  { href: "/#map", label: "Programs" },
+  { href: "/#platform", label: "How it works" },
 ];
 
 /** /directors can show Directors in nav. Home does not. */
@@ -32,7 +32,7 @@ export const directorsNavItem = { href: "/directors", label: "Directors" };
 
 export const directorsLink = {
   href: "/directors",
-  label: "For founding directors",
+  label: "Directors",
 };
 
 export const hero = {
@@ -206,7 +206,7 @@ export const footer = {
   legal: "Open Call",
   product: "Muse",
   wordmark: "Open Call",
-  line: "Open Call · Muse · Austin first, then everywhere",
+  line: "Austin first. Built to go anywhere.",
   note: "Navigation, matching, education, referral. We do not write checks.",
 };
 

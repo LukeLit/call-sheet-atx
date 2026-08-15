@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { contact, nav, site } from "@/data/content";
+import { contact, nav } from "@/data/content";
 
 type NavItem = { href: string; label: string };
 
@@ -22,13 +22,8 @@ export function Header({ extra }: HeaderProps) {
             className="h-7 w-7"
             unoptimized
           />
-          <span className="flex items-baseline gap-3">
-            <span className="font-display text-lg tracking-tight text-ink sm:text-xl">
-              {site.wordmark}
-            </span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-sheet text-ink/45 sm:inline">
-              {site.product}
-            </span>
+          <span className="font-display text-lg tracking-tight text-ink sm:text-xl">
+            Open Call
           </span>
         </a>
         <nav className="flex items-center gap-5 text-sm text-ink/70 sm:gap-7">

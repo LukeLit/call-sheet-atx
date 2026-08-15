@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { contact, directorsLink, footer, site } from "@/data/content";
 
 export function Footer() {
@@ -5,7 +6,17 @@ export function Footer() {
     <footer className="border-t border-ink/10">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
         <div>
-          <p className="font-display text-xl tracking-tight text-ink">{footer.wordmark}</p>
+          <p className="flex items-center gap-2 font-display text-xl tracking-tight text-ink">
+            <Image
+              src="/images/brand/opencall-mark.png"
+              alt=""
+              width={20}
+              height={20}
+              className="h-5 w-5"
+              unoptimized
+            />
+            {footer.wordmark}
+          </p>
           <p className="mt-2 text-sm text-ink/60">{footer.line}</p>
         </div>
         <div className="text-sm text-ink/55 sm:text-right">
@@ -22,7 +33,7 @@ export function Footer() {
             </a>
           </p>
           <p className="mt-2 text-[11px] uppercase tracking-sheet text-ink/35">
-            {site.legalName} · {site.productionUrl}
+            {site.legalName} · Austin
           </p>
         </div>
       </div>

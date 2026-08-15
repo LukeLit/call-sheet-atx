@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { hero, site } from "@/data/content";
+import { hero } from "@/data/content";
 import { MuseAsk } from "@/components/MuseAsk";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -9,18 +10,33 @@ const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 export function Hero() {
   const reduce = useReducedMotion();
   const fade = {
-    hidden: reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+    hidden: reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
   };
 
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+    <section id="top" className="relative pb-12 sm:pb-16">
+      <div className="relative h-[260px] w-full overflow-hidden sm:h-[420px] lg:h-[520px]">
+        <Image
+          src="/images/brand/hero.jpg"
+          alt="Open Call — Muse is the assistant. Find the support that already exists."
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[78%_center] sm:object-center"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-paper via-paper/55 to-transparent sm:via-paper/25"
+          aria-hidden
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto -mt-24 max-w-6xl px-5 sm:-mt-28 sm:px-8">
         <motion.div
           initial="hidden"
           animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="max-w-3xl"
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+          className="max-w-xl bg-paper/95 px-5 py-6 shadow-sheet backdrop-blur-sm sm:px-8 sm:py-8"
         >
           <motion.p
             variants={fade}
@@ -28,31 +44,23 @@ export function Hero() {
           >
             {hero.kicker}
           </motion.p>
-          <motion.h1
-            variants={fade}
-            className="mt-4 font-display text-[3.2rem] font-medium leading-[0.95] tracking-tight text-ink sm:text-7xl md:text-8xl"
-          >
-            {hero.title}
-          </motion.h1>
+          <h1 className="sr-only">{hero.title}</h1>
           <motion.p
             variants={fade}
-            className="mt-8 max-w-xl text-xl leading-snug text-ink/85 sm:text-2xl"
+            className="mt-3 font-display text-2xl font-medium leading-snug tracking-tight text-ink sm:text-3xl"
           >
             {hero.lede}
           </motion.p>
           <motion.p
             variants={fade}
-            className="mt-4 font-display text-2xl font-medium text-amber sm:text-3xl"
+            className="mt-3 font-display text-xl font-medium text-amber"
           >
             {hero.muse}
           </motion.p>
-          <motion.p
+          <motion.div
             variants={fade}
-            className="mt-6 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg"
+            className="mt-6 flex flex-wrap items-center gap-3"
           >
-            {hero.body}
-          </motion.p>
-          <motion.div variants={fade} className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={hero.primaryCta.href}
               className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-night-50"
@@ -69,46 +77,9 @@ export function Hero() {
             >
               {hero.secondaryCta.label}
             </a>
-            <a
-              href={hero.tertiaryCta.href}
-              className="text-sm text-ink/60 transition hover:text-ink"
-            >
-              {hero.tertiaryCta.label}
-            </a>
           </motion.div>
         </motion.div>
-
-        <motion.aside
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.7, ease }}
-          className="mt-16 max-w-md paper-grain shadow-sheet sm:absolute sm:right-8 sm:top-28 sm:mt-0 sm:w-72"
-        >
-          <div className="flex items-center gap-2 border-b border-ink/10 px-4 py-3">
-            <span className="punch" />
-            <span className="punch" />
-            <span className="punch" />
-            <span className="ml-auto text-[10px] font-medium uppercase tracking-sheet text-ink/50">
-              Open Call
-            </span>
-          </div>
-          <div className="space-y-3 px-4 py-4 text-ink">
-            <Row k="Production" v={site.wordmark} />
-            <Row k="Assistant" v={site.product} />
-            <Row k="First city" v={site.city} />
-            <Row k="Call time" v="Now" />
-          </div>
-        </motion.aside>
       </div>
     </section>
-  );
-}
-
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 pb-2 last:border-0">
-      <span className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">{k}</span>
-      <span className="text-right text-sm font-medium">{v}</span>
-    </div>
   );
 }
