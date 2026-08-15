@@ -4,7 +4,8 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { MessageCircle, Send, X } from "lucide-react";
+import Image from "next/image";
+import { Send, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { pickFollowUps, STARTERS } from "@/lib/muse/suggestions";
 
@@ -24,6 +25,21 @@ function lastIndexOfRole(
     if (messages[i].role === role) return i;
   }
   return -1;
+}
+
+const MUSE_AVATAR = "/images/brand/muse-avatar.png";
+
+function MuseAvatar({ className, size }: { className: string; size: number }) {
+  return (
+    <Image
+      src={MUSE_AVATAR}
+      alt=""
+      width={size}
+      height={size}
+      className={"rounded-full object-cover " + className}
+      unoptimized
+    />
+  );
 }
 
 export function MuseDrawer() {
@@ -107,7 +123,7 @@ export function MuseDrawer() {
         aria-haspopup="dialog"
         aria-expanded={open}
       >
-        <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+        <MuseAvatar className="h-6 w-6" size={24} />
         Muse
       </button>
 
@@ -130,13 +146,16 @@ export function MuseDrawer() {
         )}
       >
         <header className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">
-              Assistant
-            </p>
-            <h2 id="muse-title" className="font-display text-2xl font-medium text-ink">
-              Muse
-            </h2>
+          <div className="flex items-center gap-3">
+            <MuseAvatar className="h-8 w-8" size={32} />
+            <div>
+              <p className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">
+                Assistant
+              </p>
+              <h2 id="muse-title" className="font-display text-2xl font-medium text-ink">
+                Muse
+              </h2>
+            </div>
           </div>
           <button
             type="button"
@@ -186,7 +205,8 @@ export function MuseDrawer() {
               followUps.length > 0;
             return (
               <div key={message.id} className={cn("max-w-[90%]", muse ? "mr-auto" : "ml-auto")}>
-                <p className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">
+                <p className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-sheet text-ink/45">
+                  {muse ? <MuseAvatar className="h-3.5 w-3.5" size={14} /> : null}
                   {muse ? "Muse" : "You"}
                 </p>
                 <p
@@ -217,7 +237,8 @@ export function MuseDrawer() {
 
           {busy && messages[messages.length - 1]?.role === "user" ? (
             <div className="max-w-[90%]">
-              <p className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">
+              <p className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-sheet text-ink/45">
+                <MuseAvatar className="h-3.5 w-3.5" size={14} />
                 Muse
               </p>
               <p className="mt-1.5 bg-ink px-3.5 py-2.5 text-sm text-paper">…</p>

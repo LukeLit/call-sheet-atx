@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { contact, nav, site } from "@/data/content";
 
 type NavItem = { href: string; label: string };
@@ -12,12 +13,22 @@ export function Header({ extra }: HeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3.5 sm:px-8">
-        <a href="/#top" className="flex items-baseline gap-3">
-          <span className="font-display text-lg tracking-tight text-ink sm:text-xl">
-            {site.wordmark}
-          </span>
-          <span className="hidden text-[10px] font-medium uppercase tracking-sheet text-ink/45 sm:inline">
-            {site.product}
+        <a href="/#top" className="flex items-center gap-2.5">
+          <Image
+            src="/images/brand/opencall-mark.png"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7"
+            unoptimized
+          />
+          <span className="flex items-baseline gap-3">
+            <span className="font-display text-lg tracking-tight text-ink sm:text-xl">
+              {site.wordmark}
+            </span>
+            <span className="hidden text-[10px] font-medium uppercase tracking-sheet text-ink/45 sm:inline">
+              {site.product}
+            </span>
           </span>
         </a>
         <nav className="flex items-center gap-5 text-sm text-ink/70 sm:gap-7">
