@@ -1,4 +1,4 @@
-import { gateway, GatewayModelNotFoundError } from "@ai-sdk/gateway";
+import { createGateway, GatewayModelNotFoundError } from "@ai-sdk/gateway";
 import {
   convertToModelMessages,
   streamText,
@@ -13,8 +13,14 @@ export const runtime = "nodejs";
 const MODELS = [
   "inclusionai/ling-3.0-tiny-free",
   "inclusionai/ling-3.0-tiny",
-  "openai/gpt-4o-mini",
+  "inclusionai/ling-3.0-flash",
 ] as const;
+
+const gateway = createGateway(
+  process.env.AI_GATEWAY_URL
+    ? { baseURL: process.env.AI_GATEWAY_URL }
+    : {},
+);
 
 type MuseModel = (typeof MODELS)[number];
 

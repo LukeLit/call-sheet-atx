@@ -12,11 +12,13 @@ Muse is a persistent side drawer on the public site. It answers from org knowled
 
 Set `AI_GATEWAY_API_KEY` in the environment. Vercel already has it. Do not commit the key. The AI SDK / `@ai-sdk/gateway` picks this key up automatically.
 
+If `AI_GATEWAY_URL` is set, Muse passes it to `createGateway` as `baseURL`. The SDK does not read this variable on its own.
+
 Models, in order:
 
 1. `inclusionai/ling-3.0-tiny-free`
 2. If the gateway returns 404, model not found, or a payment error, retry once with `inclusionai/ling-3.0-tiny`
-3. Last resort: `openai/gpt-4o-mini`
+3. Last resort: `inclusionai/ling-3.0-flash`
 
 The route is `POST /api/muse`. The server logs which model served.
 
