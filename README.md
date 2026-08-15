@@ -1,8 +1,8 @@
-# Call Sheet ATX
+# Open Call
 
 Find the grants and programs that already exist — and get through them. **Muse** is the assistant.
 
-Public and legal name: **Call Sheet ATX**. Assistant: **Muse**. Texas nonprofit in formation. First city: Austin. The product is built to travel.
+Public and legal name: **Open Call**. Assistant: **Muse**. Texas nonprofit in formation. First city: Austin. The product is built to travel.
 
 Founder: Luke Litman.
 

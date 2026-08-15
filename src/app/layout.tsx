@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   applicationName: site.wordmark,
   authors: [{ name: site.founder }],
   keywords: [
-    "Call Sheet ATX",
+    "Open Call",
     "Muse",
     "artist grants",
     "musicians",

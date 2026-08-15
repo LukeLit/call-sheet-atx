@@ -1,11 +1,11 @@
 export const site = {
-  legalName: "Call Sheet ATX",
-  wordmark: "Call Sheet ATX",
+  legalName: "Open Call",
+  wordmark: "Open Call",
   product: "Muse",
   founder: "Luke Litman",
   city: "Austin, TX",
   productionUrl: "csa.ironreach.xyz",
-  tagline: "The call sheet for Austin artists looking for grants and programs.",
+  tagline: "Find the grants and programs that already exist — and get through them.",
 };
 
 /**
@@ -15,7 +15,7 @@ export const site = {
 export const contact = {
   label: "Talk to Luke",
   mailto:
-    "mailto:REPLACE_WITH_YOUR_EMAIL?subject=Call%20Sheet%20ATX%20%E2%80%94%20founding%20director",
+    "mailto:REPLACE_WITH_YOUR_EMAIL?subject=Open%20Call%20%E2%80%94%20founding%20director",
   placeholderNote: "Placeholder mailto — swap the address in src/data/content.ts",
 };
 
@@ -28,9 +28,9 @@ export const nav = [
 export const hero = {
   scene: "01",
   slug: "Hero",
-  kicker: "Austin, TX  ·  Production",
-  title: "Call Sheet ATX",
-  lede: "The call sheet for Austin artists looking for grants and programs.",
+  kicker: "Starting in Austin  ·  Built to travel",
+  title: "Open Call",
+  lede: "For artists looking for grants and programs.",
   muse: "Muse is the assistant.",
   body: "We help artists find the grants and programs that already exist — and get through them — so they can make a living from their art. Austin is the first city we are standing up.",
 };
@@ -54,7 +54,7 @@ export const problem = {
     },
     {
       label: "What we are not",
-      text: "We are not writing you a check. We hand you the call sheet — then stay with you through the scene.",
+      text: "We are not writing you a check. We find the open call — then stay with you through it.",
     },
   ],
 };
@@ -63,7 +63,7 @@ export const platform = {
   scene: "03",
   slug: "The platform",
   title: "Three surfaces. One product.",
-  lede: "Call Sheet ATX is the platform. Muse is how artists meet it. This is the product — not a brochure around a future idea.",
+  lede: "Open Call is the platform. Muse is how artists meet it. This is the product — not a brochure around a future idea.",
   surfaces: [
     {
       id: "muse",
@@ -91,7 +91,7 @@ export const ask = {
   slug: "The ask",
   title: "We need founding directors.",
   body: [
-    "Call Sheet ATX is forming as a Texas nonprofit. The mission is simple: connect artists to grants and other existing programs so they can make a living from their art. Austin is the first market — not the ceiling.",
+    "Open Call is forming as a Texas nonprofit. The mission is simple: connect artists to grants and other existing programs so they can make a living from their art. Austin is the first market — not the ceiling.",
     "This is governance, not a full-time job. A few meetings. A clear mission. Your name on the papers. Help keep the work honest while Muse goes to work.",
   ],
   cta: "Join as a founding director",
@@ -99,8 +99,8 @@ export const ask = {
 
 export const footer = {
   city: "Austin, TX",
-  legal: "Call Sheet ATX",
+  legal: "Open Call",
   product: "Muse",
-  wordmark: "Call Sheet ATX",
+  wordmark: "Open Call",
   note: "Navigation, matching, education, referral. Not a check-writing shop.",
 };

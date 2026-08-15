@@ -82,7 +82,7 @@ export function Hero() {
             <span className="punch" />
             <span className="punch" />
             <span className="ml-auto text-[10px] font-medium uppercase tracking-sheet text-ink/50">
-              Call Sheet ATX
+              Open Call
             </span>
           </div>
           <div className="space-y-3 px-4 py-4 text-ink">
