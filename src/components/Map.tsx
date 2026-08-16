@@ -3,10 +3,19 @@ import { Reveal } from "@/components/Reveal";
 import { MuseAsk } from "@/components/MuseAsk";
 import { cn } from "@/lib/cn";
 
-const cardPrompts: Record<string, string> = {
-  grants: "Walk me through the City of Austin ACME grants that are open right now.",
-  health: "Can I join HAAM if I only play a few gigs a month?",
-  work: "What can TWC do if my gigs are uneven and I also work retail?",
+const cardPrompts: Record<string, { prompt: string; topic: string }> = {
+  grants: {
+    prompt: "Walk me through the City of Austin ACME grants that are open right now.",
+    topic: "ACME grants",
+  },
+  health: {
+    prompt: "Can I join HAAM if I only play a few gigs a month?",
+    topic: "HAAM",
+  },
+  work: {
+    prompt: "What can TWC do if my gigs are uneven and I also work retail?",
+    topic: "TWC",
+  },
 };
 
 export function Map() {
@@ -53,8 +62,11 @@ export function Map() {
                     {item.text}
                   </p>
                   {cardPrompts[item.id] ? (
-                    <div className="mt-5">
-                      <MuseAsk prompt={cardPrompts[item.id]} variant="ghost" />
+                    <div className="mt-5 hidden md:block">
+                      <MuseAsk
+                        prompt={cardPrompts[item.id].prompt}
+                        topic={cardPrompts[item.id].topic}
+                      />
                     </div>
                   ) : null}
                 </article>

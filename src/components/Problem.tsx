@@ -33,10 +33,10 @@ export function Problem() {
           ))}
         </div>
 
-        <Reveal delay={0.28} className="mt-8">
+        <Reveal delay={0.28} className="mt-8 hidden md:block">
           <MuseAsk
             prompt="Deadlines hide in PDFs. What's actually open in Austin this month?"
-            label="Ask Muse what's open"
+            topic="what's open this month"
           />
         </Reveal>
       </div>

@@ -22,7 +22,7 @@ export function Closer() {
             </a>
             <MuseAsk
               prompt="I play a few gigs a month in Austin. What should I look at first — grants, HAAM, or TWC?"
-              label="Ask Muse"
+              topic="grants, HAAM, or TWC"
             />
             <a
               href={contact.href}

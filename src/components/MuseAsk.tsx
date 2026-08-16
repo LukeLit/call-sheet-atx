@@ -1,40 +1,34 @@
 "use client";
 
 import Image from "next/image";
-import { cn } from "@/lib/cn";
 import { openMuse } from "@/lib/muse/open";
 
 type MuseAskProps = {
   prompt: string;
-  label?: string;
-  variant?: "solid" | "ghost";
+  /** Hover tooltip and the topic named in the accessible label. Not shown on the face. */
+  topic: string;
 };
 
-export function MuseAsk({
-  prompt,
-  label = "Ask Muse",
-  variant = "solid",
-}: MuseAskProps) {
+export function MuseAsk({ prompt, topic }: MuseAskProps) {
+  const name = `Ask Muse about ${topic}`;
+
   return (
     <button
       type="button"
       onClick={() => openMuse(prompt)}
-      className={cn(
-        "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm transition",
-        variant === "solid"
-          ? "bg-ink font-medium text-paper hover:bg-night-50"
-          : "border border-ink/20 text-ink/80 hover:border-ink/45 hover:text-ink",
-      )}
+      title={topic}
+      aria-label={name}
+      className="hidden items-center gap-2 rounded-full border border-ink/15 bg-paper-50/80 py-1 pl-1 pr-2.5 text-[11px] font-medium uppercase tracking-sheet text-ink/55 transition hover:border-amber/55 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper md:inline-flex"
     >
       <Image
         src="/images/brand/muse-avatar.png"
         alt=""
-        width={16}
-        height={16}
-        className="h-4 w-4 rounded-full object-cover"
+        width={28}
+        height={28}
+        className="h-7 w-7 rounded-full object-cover"
         unoptimized
       />
-      {label}
+      Muse
     </button>
   );
 }

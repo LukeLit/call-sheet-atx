@@ -139,7 +139,7 @@ export function MuseDrawer() {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "fixed z-50 flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-paper shadow-sheet transition hover:bg-night-50",
+          "fixed z-50 rounded-full shadow-sheet ring-2 ring-paper transition hover:ring-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper",
           open && "pointer-events-none opacity-0",
         )}
         style={{
@@ -148,9 +148,10 @@ export function MuseDrawer() {
         }}
         aria-haspopup="dialog"
         aria-expanded={open}
+        aria-label="Ask Muse"
+        title="Ask Muse"
       >
-        <MuseAvatar className="h-6 w-6" size={24} />
-        Muse
+        <MuseAvatar className="h-12 w-12" size={48} />
       </button>
 
       <div

@@ -89,7 +89,7 @@ export function Hero() {
             </a>
             <MuseAsk
               prompt="What city of Austin grants are open right now for a working musician?"
-              label="Ask Muse"
+              topic="open City of Austin grants"
             />
             <a
               href={hero.secondaryCta.href}

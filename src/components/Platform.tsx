@@ -67,10 +67,10 @@ export function Platform() {
                     {surface.text}
                   </p>
                   {featured ? (
-                    <div className="mt-auto pt-5">
+                    <div className="mt-auto hidden pt-5 md:block">
                       <MuseAsk
                         prompt="What can you actually help me with today?"
-                        label="Talk to Muse"
+                        topic="what Muse can help with"
                       />
                     </div>
                   ) : null}
