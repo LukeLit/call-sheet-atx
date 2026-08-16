@@ -14,7 +14,6 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <PhotoBand photo={photos.capitolMusic} />
         <Problem />
         <PhotoBand photo={photos.graffitiPark} />
         <Map />

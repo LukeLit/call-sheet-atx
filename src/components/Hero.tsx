@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { hero, site } from "@/data/content";
+import { hero, photos } from "@/data/content";
 import { MuseAsk } from "@/components/MuseAsk";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -15,40 +16,67 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-10 sm:gap-12 sm:px-8 sm:pb-24 sm:pt-16 lg:grid-cols-12 lg:gap-14 lg:pt-20">
+        <motion.figure
+          initial={reduce ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease }}
+          className="order-1 lg:order-2 lg:col-span-5"
+        >
+          <div className="paper-grain rounded-sm p-1.5 shadow-sheet sm:p-2">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-[2px] sm:aspect-[4/5]">
+              <Image
+                src={photos.capitolMusic.src}
+                alt={photos.capitolMusic.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                className="object-cover object-[center_42%]"
+              />
+            </div>
+          </div>
+          <figcaption className="mt-3 text-[11px] uppercase tracking-sheet text-ink/45">
+            {photos.capitolMusic.caption}
+          </figcaption>
+        </motion.figure>
+
         <motion.div
           initial="hidden"
           animate="show"
           variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="max-w-3xl"
+          className="order-2 lg:order-1 lg:col-span-7"
         >
+          <motion.div variants={fade}>
+            <Image
+              src="/images/brand/opencall-mark.png"
+              alt=""
+              width={32}
+              height={32}
+              className="h-8 w-8"
+              unoptimized
+            />
+          </motion.div>
           <motion.p
             variants={fade}
-            className="text-[11px] font-medium uppercase tracking-sheet text-amber"
+            className="mt-5 text-[11px] font-medium uppercase tracking-sheet text-amber"
           >
             {hero.kicker}
           </motion.p>
           <motion.h1
             variants={fade}
-            className="mt-4 font-display text-[3.2rem] font-medium leading-[0.95] tracking-tight text-ink sm:text-7xl md:text-8xl"
+            className="mt-4 max-w-xl font-display text-4xl font-medium leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
-            {hero.title}
+            {hero.lede}
           </motion.h1>
           <motion.p
             variants={fade}
-            className="mt-8 max-w-xl text-xl leading-snug text-ink/85 sm:text-2xl"
-          >
-            {hero.lede}
-          </motion.p>
-          <motion.p
-            variants={fade}
-            className="mt-4 font-display text-2xl font-medium text-amber sm:text-3xl"
+            className="mt-6 font-display text-2xl font-medium text-amber sm:text-3xl"
           >
             {hero.muse}
           </motion.p>
           <motion.p
             variants={fade}
-            className="mt-6 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg"
+            className="mt-5 max-w-lg text-base leading-relaxed text-ink/70 sm:text-lg"
           >
             {hero.body}
           </motion.p>
@@ -77,38 +105,7 @@ export function Hero() {
             </a>
           </motion.div>
         </motion.div>
-
-        <motion.aside
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.7, ease }}
-          className="mt-16 max-w-md paper-grain shadow-sheet sm:absolute sm:right-8 sm:top-28 sm:mt-0 sm:w-72"
-        >
-          <div className="flex items-center gap-2 border-b border-ink/10 px-4 py-3">
-            <span className="punch" />
-            <span className="punch" />
-            <span className="punch" />
-            <span className="ml-auto text-[10px] font-medium uppercase tracking-sheet text-ink/50">
-              Open Call
-            </span>
-          </div>
-          <div className="space-y-3 px-4 py-4 text-ink">
-            <Row k="Production" v={site.wordmark} />
-            <Row k="Assistant" v={site.product} />
-            <Row k="First city" v={site.city} />
-            <Row k="Call time" v="Now" />
-          </div>
-        </motion.aside>
       </div>
     </section>
-  );
-}
-
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-ink/10 pb-2 last:border-0">
-      <span className="text-[10px] font-medium uppercase tracking-sheet text-ink/45">{k}</span>
-      <span className="text-right text-sm font-medium">{v}</span>
-    </div>
   );
 }
