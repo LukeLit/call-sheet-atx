@@ -1,7 +1,7 @@
 export const DEFAULT_MODELS = [
   "poolside/laguna-s-2.1-free",
-  "alibaba/qwen3.8-27b",
   "alibaba/qwen3.7-flash",
+  "inclusionai/ling-3.0-flash",
 ] as const;
 
 export type AllowlistedModel = {
@@ -15,7 +15,7 @@ export const ALLOWLIST: AllowlistedModel[] = [
   {
     id: "alibaba/qwen3.8-27b",
     label: "alibaba/qwen3.8-27b",
-    note: "free",
+    note: "no longer free",
   },
   { id: "alibaba/qwen3.7-flash", label: "alibaba/qwen3.7-flash" },
   { id: "inclusionai/ling-3.0-flash", label: "inclusionai/ling-3.0-flash" },
