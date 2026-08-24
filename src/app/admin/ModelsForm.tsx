@@ -20,8 +20,11 @@ function sourceLabel(source: LiveModels["source"]): string {
 }
 
 export function ModelsForm({ live, preview, writable }: Props) {
-  const initial = !writable && preview?.length === 3 ? preview : live.models;
-  const padded = [initial[0] ?? "", initial[1] ?? "", initial[2] ?? ""];
+  const initial =
+    !writable && preview && preview.length === MODEL_SLOTS.length
+      ? preview
+      : live.models;
+  const padded = MODEL_SLOTS.map((_, index) => initial[index] ?? "");
 
   const [slots, setSlots] = useState<string[]>(padded);
   const [custom, setCustom] = useState(() => {
@@ -112,7 +115,7 @@ export function ModelsForm({ live, preview, writable }: Props) {
           Open Call ops
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-ink/75">
-          Model chain for the public Muse drawer. Primary, then fallback, then last.
+          Model chain for the public Muse drawer. Primary, then fallback, then tertiary, then last.
         </p>
       </div>
 

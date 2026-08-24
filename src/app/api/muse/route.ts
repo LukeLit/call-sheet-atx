@@ -12,6 +12,7 @@ export const runtime = "nodejs";
 
 const MODELS = [
   "poolside/laguna-s-2.1-free",
+  "nvidia/nemotron-3.5-lightning-free",
   "alibaba/qwen3.7-flash",
   "inclusionai/ling-3.0-flash",
 ] as const;

@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const chain = normalizeChain(incoming);
   if (!chain) {
     return NextResponse.json(
-      { error: "Need primary, fallback, and last as provider/model ids." },
+      { error: "Need primary, fallback, tertiary, and last as provider/model ids." },
       { status: 400 },
     );
   }

@@ -17,8 +17,9 @@ Muse is a persistent side drawer on the public site. It answers from org knowled
 Models, in order:
 
 1. `poolside/laguna-s-2.1-free`
-2. If the gateway returns 404, model not found, a rate limit, or a payment error, retry with `alibaba/qwen3.7-flash`
-3. Last resort: `inclusionai/ling-3.0-flash`
+2. If the gateway returns 404, model not found, a rate limit, or a payment error, retry with `nvidia/nemotron-3.5-lightning-free`
+3. Then `alibaba/qwen3.7-flash`
+4. Last resort: `inclusionai/ling-3.0-flash`
 
 The route is `POST /api/muse`. The server logs which model served.
 
@@ -28,9 +29,9 @@ The route is `POST /api/muse`. The server logs which model served.
 
 Set `ADMIN_SECRET` in the environment. Middleware gates `/admin` and `/api/admin/*` with an HttpOnly, Secure, SameSite=lax cookie. If `ADMIN_SECRET` is unset, `/admin` shows a not-configured state and the public site does not 500.
 
-The panel can set a Muse primary / fallback / last chain.
+The panel can set a Muse primary / fallback / tertiary / last chain.
 
-- Optional `MUSE_MODELS` — comma-separated ids, for example `poolside/laguna-s-2.1-free,alibaba/qwen3.7-flash,inclusionai/ling-3.0-flash`
+- Optional `MUSE_MODELS` — comma-separated ids, for example `poolside/laguna-s-2.1-free,nvidia/nemotron-3.5-lightning-free,alibaba/qwen3.7-flash,inclusionai/ling-3.0-flash`
 - Optional Edge Config: connect a store so Vercel sets `EDGE_CONFIG` (or `GLOBAL_CONFIG`). Writes use the official REST API (`PATCH /v1/edge-config/{id}/items`) with a Vercel Access Token in `VERCEL_ACCESS_TOKEN`. There is no dedicated Edge Config write env; the store id is parsed from the connection string. The key is `muse_models`.
 
 If Edge Config write is not available, save still succeeds: the UI shows the exact `MUSE_MODELS` value to paste into Vercel, and keeps a preview cookie in that browser only. The preview cookie never changes Muse for other people.

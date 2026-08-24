@@ -1,5 +1,6 @@
 export const DEFAULT_MODELS = [
   "poolside/laguna-s-2.1-free",
+  "nvidia/nemotron-3.5-lightning-free",
   "alibaba/qwen3.7-flash",
   "inclusionai/ling-3.0-flash",
 ] as const;
@@ -12,6 +13,16 @@ export type AllowlistedModel = {
 
 export const ALLOWLIST: AllowlistedModel[] = [
   { id: "poolside/laguna-s-2.1-free", label: "poolside/laguna-s-2.1-free" },
+  {
+    id: "nvidia/nemotron-3.5-lightning-free",
+    label: "nvidia/nemotron-3.5-lightning-free",
+    note: "free",
+  },
+  {
+    id: "nvidia/nemotron-3.5-lightning",
+    label: "nvidia/nemotron-3.5-lightning",
+    note: "prefer -free id",
+  },
   {
     id: "alibaba/qwen3.8-27b",
     label: "alibaba/qwen3.8-27b",
@@ -29,6 +40,7 @@ export const ALLOWLIST: AllowlistedModel[] = [
 export const MODEL_SLOTS = [
   { key: "primary", label: "Primary" },
   { key: "fallback", label: "Fallback" },
+  { key: "tertiary", label: "Tertiary" },
   { key: "last", label: "Last" },
 ] as const;
 
@@ -61,7 +73,7 @@ export function isValidModelId(value: string): boolean {
 
 export function normalizeChain(models: string[]): string[] | null {
   const chain = models.map((model) => model.trim()).filter(Boolean);
-  if (chain.length !== 3) return null;
+  if (chain.length !== 4) return null;
   if (!chain.every(isValidModelId)) return null;
   return chain;
 }
