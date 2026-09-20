@@ -17,12 +17,12 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const title = "Open Call — Find the support that already exists";
+const title = "Open Call — Grants and support programs for working artists";
 const ogImage = {
   url: "/images/brand/og.png",
   width: 1200,
   height: 630,
-  alt: "Open Call — Muse is the assistant",
+  alt: "Open Call — grants and support programs for working artists. Muse is the assistant.",
 };
 
 export const metadata: Metadata = {
