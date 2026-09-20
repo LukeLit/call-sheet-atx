@@ -7,7 +7,7 @@ export const site = {
   productionUrl: "csa.ironreach.xyz",
   tagline: "Artists shouldn't have to be grant researchers to make a living from their work.",
   description:
-    "Open Call helps people find grants, health programs, work help, and other support that already exists. Muse is the assistant. Austin first. Built for everywhere. We do not write checks.",
+    "Open Call helps artists and gig workers find grants, plus health coverage, workforce help, and small-business programs. Muse is the assistant that helps you find what fits. Starting in Austin.",
 };
 
 export const contact = {
@@ -38,11 +38,11 @@ export const directorsLink = {
 export const hero = {
   scene: "01",
   slug: "Hero",
-  kicker: "Starting in Austin. Built to go anywhere.",
+  kicker: "Built for musicians and gig workers. Starting in Austin.",
   title: "Open Call",
-  lede: "Artists shouldn't have to be grant researchers to make a living from their work.",
-  muse: "Muse is the assistant.",
-  body: "Grants stay the main draw. The same map covers health, work, and the other help that keeps a gig month together. First city: Austin. Then anywhere.",
+  lede: "Grants and support programs for working artists.",
+  muse: "Muse is the assistant that helps you find what fits.",
+  body: "Artists shouldn't have to be grant researchers to make a living from their work. Grants are the main draw — the same map covers health coverage, workforce help, and small-business programs for gig workers. First city: Austin. Then anywhere.",
   primaryCta: { href: "#map", label: "See the map" },
   secondaryCta: { href: "#platform", label: "How it works" },
   tertiaryCta: { href: "/contact", label: "Talk to us" },
