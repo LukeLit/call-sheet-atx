@@ -25,6 +25,8 @@ export const nav = [
   { href: "/#problem", label: "Why" },
   { href: "/#map", label: "Programs" },
   { href: "/#platform", label: "How it works" },
+  { href: "/news", label: "News" },
+  { href: "/faq", label: "Questions" },
 ];
 
 /** /directors can show Directors in nav. Home does not. */

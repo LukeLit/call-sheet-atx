@@ -3,10 +3,13 @@ import { cookies } from "next/headers";
 import { ADMIN_COOKIE, PREVIEW_COOKIE, verifyAdminCookie } from "@/lib/admin/auth";
 import { parseModelList } from "@/lib/muse/models";
 import { canWriteEdgeConfig, readLiveModels } from "@/lib/muse/store";
+import { daysSinceVerified, isStale, programStatus } from "@/lib/programs/status";
+import { canWritePrograms, readPrograms } from "@/lib/programs/store";
 import { AdminChrome } from "./AdminChrome";
 import { LoginForm } from "./LoginForm";
 import { ModelsForm } from "./ModelsForm";
 import { NotConfigured } from "./NotConfigured";
+import { ProgramsPanel, type ProgramRow } from "./ProgramsPanel";
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +44,19 @@ export default async function AdminPage({
 
   const live = await readLiveModels();
   const preview = parseModelList(jar.get(PREVIEW_COOKIE)?.value);
+  const { programs, source } = await readPrograms();
+  const now = new Date();
+  const rows: ProgramRow[] = programs.map((p) => ({
+    id: p.id,
+    name: p.name,
+    kind: p.kind,
+    url: p.url,
+    status: programStatus(p, now),
+    lastVerified: p.last_verified,
+    daysAgo: daysSinceVerified(p, now),
+    verifiedBy: p.verified_by,
+    stale: isStale(p, now),
+  }));
 
   return (
     <AdminChrome signedIn>
@@ -49,6 +65,7 @@ export default async function AdminPage({
         preview={preview}
         writable={canWriteEdgeConfig()}
       />
+      <ProgramsPanel rows={rows} source={source} writable={canWritePrograms()} />
     </AdminChrome>
   );
 }

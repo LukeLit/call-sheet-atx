@@ -6,6 +6,8 @@ import {
   type UIMessage,
 } from "ai";
 import { MUSE_KNOWLEDGE } from "@/lib/muse/knowledge";
+import { renderPrograms } from "@/lib/programs/prompt";
+import { readPrograms } from "@/lib/programs/store";
 
 export const maxDuration = 60;
 export const runtime = "nodejs";
@@ -75,14 +77,27 @@ function isRetryableGatewayError(error: unknown): boolean {
   return false;
 }
 
+/** The text of the last thing the person said, whichever message shape the client sent. */
+function lastUserText(messages: unknown[]): string {
+  for (let i = messages.length - 1; i >= 0; i -= 1) {
+    const m = messages[i] as { role?: string; content?: unknown; parts?: unknown };
+    if (m?.role !== "user") continue;
+    if (typeof m.content === "string") return m.content;
+    const pieces = (Array.isArray(m.parts) ? m.parts : Array.isArray(m.content) ? m.content : []) as Array<{ type?: string; text?: unknown }>;
+    return pieces.map((x) => (x?.type === "text" && typeof x.text === "string" ? x.text : "")).join(" ");
+  }
+  return "";
+}
+
 async function startModelStream(
   model: MuseModel,
+  system: string,
   messages: ModelMessage[],
   signal: AbortSignal,
 ) {
   const result = streamText({
     model: gateway(model),
-    system: MUSE_KNOWLEDGE,
+    system,
     messages,
     abortSignal: signal,
   });
@@ -133,12 +148,17 @@ export async function POST(request: Request) {
     ? await convertToModelMessages(incoming as UIMessage[])
     : (incoming as ModelMessage[]);
 
+  // The knowledge, then the programs database as it stands today (statuses worked out now)
+  const { programs, source } = await readPrograms();
+  const system = `${MUSE_KNOWLEDGE}\n${renderPrograms(programs, lastUserText(incoming))}`;
+  console.info(`[muse] ${programs.length} programs from ${source}`);
+
   let lastError: unknown;
 
   for (let i = 0; i < MODELS.length; i += 1) {
     const model = MODELS[i];
     try {
-      const result = await startModelStream(model, modelMessages, request.signal);
+      const result = await startModelStream(model, system, modelMessages, request.signal);
       console.info(`[muse] served by ${model}`);
       return result.toUIMessageStreamResponse();
     } catch (error) {
