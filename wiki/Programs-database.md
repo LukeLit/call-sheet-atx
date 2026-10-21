@@ -1,6 +1,6 @@
 # Programs database
 
-The programs Open Call knows about. Muse talks about these and nothing else.
+The programs Open Call knows about. Muse talks about these and nothing else. **It is baked data, updated by hand when Luke can; it is a proof of concept, not a maintained feed.** The database (Supabase) is optional plumbing so rows can be edited and verified without a deploy.
 
 ## Where it lives
 - **Starter list:** `src/data/programs.json` in the repo. One source for everything below.

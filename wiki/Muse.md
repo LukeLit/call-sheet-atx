@@ -14,4 +14,6 @@ The assistant in the drawer. Route: `POST /api/muse` (`src/app/api/muse/route.ts
 - No write tools. Plain, warm, short. Doesn't put the organizer's name in casual replies.
 - People in tech, games or design who are out of work can ask too: say which programs may fit and which don't (TWC serves people with uneven work, not only artists; arts programs define who counts; HAAM is for musicians).
 
+Muse is a proof of concept. It answers from baked data (see [[Programs database]]) that Luke updates by hand when he can; it is not a live feed and can lag the official pages. The prompt tells it to say so.
+
 Not built yet: the artist app (profiles, matches, deadlines) and the human ops desk are listed as coming.

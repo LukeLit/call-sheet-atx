@@ -57,19 +57,19 @@ export const faqs: Faq[] = [
   {
     q: "Why only Austin?",
     a: [
-      "Open Call is a small demo, and its library is limited to Austin programs for now. The product is built to travel.",
+      "Open Call is a proof of concept, and its library is limited to Austin programs for now. The product is built to travel.",
     ],
   },
   {
     q: "How current is the information?",
     a: [
-      "Muse tells you when each program was last checked against its official page, and whether its round is open, closed, or not open yet. Rounds close. If something looks old or wrong, check the official page and tell me.",
+      "The program list is baked in and I update it by hand when I can, so it can be behind. Muse tells you when each program was last checked against its official page, and whether its round is open, closed, or not open yet. Rounds close. Check the official page before you act, and if something looks old or wrong, tell me.",
     ],
   },
   {
     q: "Something is wrong or missing. Who do I tell?",
     a: [
-      "Write to me. This is a demo and I'd like to hear how it goes, including where it got in your way, and which programs you wish were on it.",
+      "Write to me. This is a proof of concept and I'd like to hear how it goes, including where it got in your way, and which programs you wish were on it.",
     ],
   },
   {

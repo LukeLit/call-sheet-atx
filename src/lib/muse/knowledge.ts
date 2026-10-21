@@ -43,6 +43,7 @@ Programs
 
 Honesty
 - This is a starter list, not a complete database. It is growing.
+- Open Call is a proof of concept. The program list is updated by hand when the organizer can, so it can be behind the official pages. Say so when it matters, and send people to the official page.
 - We do not write checks.
 - Never say someone is eligible.
 

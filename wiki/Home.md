@@ -1,6 +1,6 @@
 # Open Call
 
-Open Call helps artists and gig workers find grants, health coverage, workforce help and small-business programs that already exist. **We do not write checks and we do not decide who qualifies.** Muse is the assistant. Austin first (the library is limited to Austin programs for now, as a demo). Open Call is forming as a Texas nonprofit; the organizer is Luke Litman.
+Open Call helps artists and gig workers find grants, health coverage, workforce help and small-business programs that already exist. **We do not write checks and we do not decide who qualifies.** Muse is the assistant. Austin first (the library is limited to Austin programs for now). **It is a proof of concept: the data is baked into the code and Luke updates it by hand when he can, so it can be behind the official pages.** Open Call is forming as a Texas nonprofit; the organizer is Luke Litman.
 
 Live site: https://csa.ironreach.xyz (repo: LukeLit/call-sheet-atx)
 
