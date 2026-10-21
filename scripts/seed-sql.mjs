@@ -15,4 +15,7 @@ const out = [
   "",
 ].join("\n");
 writeFileSync(new URL("../supabase/002_seed_programs.sql", import.meta.url), out);
-console.log(`wrote supabase/002_seed_programs.sql (${rows.length} programs)`);
+// One file to paste into the Supabase SQL editor: the table, then the programs
+const table = readFileSync(new URL("../supabase/001_programs.sql", import.meta.url), "utf8");
+writeFileSync(new URL("../supabase/setup.sql", import.meta.url), `${table}\n${out}`);
+console.log(`wrote supabase/002_seed_programs.sql and supabase/setup.sql (${rows.length} programs)`);
