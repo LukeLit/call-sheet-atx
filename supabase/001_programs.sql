@@ -1,0 +1,38 @@
+-- Open Call: the programs database (src/lib/programs). Run once in the Supabase SQL editor, then
+-- run supabase/002_seed_programs.sql (generated: `pnpm seed:sql`) to load the starter list.
+--
+-- Only the server reads and writes this table, with the service role key (SUPABASE_URL and
+-- SUPABASE_SERVICE_ROLE_KEY, set in Vercel, never in the browser). RLS is on and there are no
+-- policies, so the anon key can do nothing with it.
+create table if not exists public.programs (
+  id            text primary key check (id ~ '^[a-z0-9-]+$'),
+  name          text not null,
+  kind          text not null check (kind in ('grant', 'health', 'work', 'business', 'other')),
+  "group"       text,
+  summary       text not null,
+  who           jsonb not null default '[]'::jsonb,
+  amount        text,
+  opens         timestamptz,
+  closes        timestamptz,
+  rolling       boolean not null default false,
+  timing_note   text,
+  how_to_apply  text,
+  url           text not null,
+  source_url    text,
+  region        text not null,
+  last_verified date not null,
+  verified_by   text not null,
+  updated_at    timestamptz not null default now()
+);
+
+create index if not exists programs_kind_idx on public.programs (kind);
+create index if not exists programs_closes_idx on public.programs (closes);
+
+create or replace function public.programs_touch() returns trigger language plpgsql as $$
+begin new.updated_at = now(); return new; end $$;
+
+drop trigger if exists programs_touch on public.programs;
+create trigger programs_touch before update on public.programs
+  for each row execute function public.programs_touch();
+
+alter table public.programs enable row level security;

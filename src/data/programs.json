@@ -1,0 +1,169 @@
+[
+  {
+    "id": "acme-elevate",
+    "name": "Elevate (City of Austin ACME FY27)",
+    "kind": "grant",
+    "group": "City of Austin ACME FY27",
+    "summary": "City of Austin funding for arts organizations, individual artists, and creative businesses producing public art. KUT reported about $11 million.",
+    "who": [
+      "Arts organizations, individual artists, and creative businesses producing public art",
+      "18 or older",
+      "Live or based in the Austin-Round Rock MSA for the grant term",
+      "Public activities in Austin or the ETJ; HOT tourism rules apply",
+      "One application per program per applicant entity",
+      "Not a full-time City of Austin / ACME employee"
+    ],
+    "amount": "About $11 million in total (as reported by KUT)",
+    "opens": null,
+    "closes": "2026-08-18T18:59:00-05:00",
+    "timing_note": "The FY27 round closed 6:59pm on August 18, 2026. Late applications were not accepted.",
+    "how_to_apply": "Complete the Universal Program Eligibility Form, then the program application. Portal help: ApplicationHelp@thelongcenter.org. Program questions: CulturalArts@AustinTexas.gov. Office hours Tuesdays 10am-noon.",
+    "url": "https://www.austintexas.gov/arts-culture/funding-programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "acme-thrive",
+    "name": "Thrive (City of Austin ACME FY27)",
+    "kind": "grant",
+    "group": "City of Austin ACME FY27",
+    "summary": "City of Austin funding for local arts nonprofits. KUT reported about $3 million.",
+    "who": [
+      "Local arts nonprofits",
+      "Universal program notes apply: Austin-Round Rock MSA, public activities in Austin or the ETJ, one application per program per applicant entity"
+    ],
+    "amount": "About $3 million in total (as reported by KUT)",
+    "opens": null,
+    "closes": "2026-08-18T18:59:00-05:00",
+    "timing_note": "The FY27 round closed 6:59pm on August 18, 2026. Late applications were not accepted.",
+    "how_to_apply": "Complete the Universal Program Eligibility Form, then the program application. Portal help: ApplicationHelp@thelongcenter.org. Program questions: CulturalArts@AustinTexas.gov.",
+    "url": "https://www.austintexas.gov/arts-culture/funding-programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "acme-live-music-fund",
+    "name": "Austin Live Music Fund (City of Austin ACME FY27)",
+    "kind": "grant",
+    "group": "City of Austin ACME FY27",
+    "summary": "A $6 million City of Austin fund for professional musicians, independent promoters, and live music venues.",
+    "who": [
+      "Must meet the Professional Musician, Independent Promoter, or Live Music Venue definition on the program page",
+      "Live Music Venue: a minimum $60,000 operating budget",
+      "Universal program notes apply: 18 or older, Austin-Round Rock MSA, one application per program per applicant entity"
+    ],
+    "amount": "$6 million in total. Professional Musician and Independent Promoter: $20,000 over 24 months or $5,000 over 12 months. Live Music Venue: $70,000 over 12 months.",
+    "opens": null,
+    "closes": "2026-08-18T18:59:00-05:00",
+    "timing_note": "The FY27 round closed 6:59pm on August 18, 2026. Late applications were not accepted.",
+    "how_to_apply": "Complete the Universal Program Eligibility Form, then the program application. Program questions: CulturalArts@AustinTexas.gov.",
+    "url": "https://www.austintexas.gov/arts-culture/austin-live-music-fund",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "acme-heritage-preservation",
+    "name": "Heritage Preservation Grant (City of Austin ACME FY27)",
+    "kind": "grant",
+    "group": "City of Austin ACME FY27",
+    "summary": "City of Austin funding for heritage events and historic-site projects. KUT reported about $3 million.",
+    "who": [
+      "Heritage events and historic-site projects",
+      "Universal program notes apply: Austin-Round Rock MSA, public activities in Austin or the ETJ, one application per program per applicant entity"
+    ],
+    "amount": "About $3 million in total (as reported by KUT)",
+    "opens": null,
+    "closes": "2026-08-18T18:59:00-05:00",
+    "timing_note": "The FY27 round closed 6:59pm on August 18, 2026. Late applications were not accepted.",
+    "how_to_apply": "Complete the Universal Program Eligibility Form, then the program application. Program questions: CulturalArts@AustinTexas.gov.",
+    "url": "https://www.austintexas.gov/arts-culture/funding-programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "acme-nexus",
+    "name": "Nexus (City of Austin ACME)",
+    "kind": "grant",
+    "group": "City of Austin ACME",
+    "summary": "A City of Austin program for emerging cultural and creative individuals and organizations.",
+    "who": [
+      "Emerging cultural and creative individuals and organizations"
+    ],
+    "opens": null,
+    "closes": null,
+    "timing_note": "Listed as opening in September 2026. The exact dates are not in the starter list.",
+    "url": "https://www.austintexas.gov/arts-culture/funding-programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "acme-creative-space",
+    "name": "Creative Space Assistance Program (City of Austin ACME)",
+    "kind": "other",
+    "group": "City of Austin ACME",
+    "summary": "Listed on the City of Austin ACME funding page as opening in Summer 2027. The starter list has no other details.",
+    "who": [],
+    "opens": null,
+    "closes": null,
+    "timing_note": "Listed as opening in Summer 2027.",
+    "url": "https://www.austintexas.gov/arts-culture/funding-programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "haam",
+    "name": "HAAM (Health Alliance for Austin Musicians)",
+    "kind": "health",
+    "summary": "Health care help for Austin's working musicians: premium assistance, primary care, dental, vision, hearing, mind and body, fitness, and healthcare navigation.",
+    "who": [
+      "Working musician, music teacher, or DJ (part or full time)",
+      "Lives in Travis or surrounding counties",
+      "Annual tax household income at or below 400% of the federal poverty level (self-employed: net after expenses)",
+      "Proof of music work in the last 12 months (gigs, releases, teaching, and similar). HAAM says apply anyway if unsure."
+    ],
+    "rolling": true,
+    "timing_note": "People can join year-round. Open enrollment for insurance help is November 1 to December 15.",
+    "how_to_apply": "Request an application on the join page. Contact: 512-541-4226 option 2, support@myhaam.org.",
+    "url": "https://www.myhaam.org/join-haam",
+    "source_url": "https://www.myhaam.org/programs",
+    "region": "Austin",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "twc",
+    "name": "Texas Workforce Commission (TWC)",
+    "kind": "work",
+    "summary": "The state labor agency: unemployment, workforce solutions, training, and benefits for people with uneven work. Someone with a few gigs plus a retail job can still ask.",
+    "who": [
+      "People with uneven work. Specific benefit amounts and eligibility come from TWC and local Workforce Solutions offices."
+    ],
+    "rolling": true,
+    "timing_note": "Ongoing. No cycle or deadline.",
+    "how_to_apply": "Contact TWC or a local Workforce Solutions office. The starter list does not include benefit amounts.",
+    "url": "https://www.twc.texas.gov",
+    "region": "Texas",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  },
+  {
+    "id": "tca",
+    "name": "Texas Commission on the Arts (TCA)",
+    "kind": "grant",
+    "summary": "The state arts agency. Its grant guidelines and deadline calendar are on its site.",
+    "who": [
+      "See the guidelines for each TCA program."
+    ],
+    "timing_note": "The starter list has no current open cycle. Check the TCA calendar.",
+    "url": "https://www.arts.texas.gov",
+    "region": "Texas",
+    "last_verified": "2026-08-15",
+    "verified_by": "starter list"
+  }
+]
