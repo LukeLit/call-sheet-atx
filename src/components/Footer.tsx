@@ -28,6 +28,18 @@ export function Footer() {
             <span className="mx-2 text-ink/25" aria-hidden>
               ·
             </span>
+            <a href="/news" className="underline-offset-4 hover:underline">
+              News
+            </a>
+            <span className="mx-2 text-ink/25" aria-hidden>
+              ·
+            </span>
+            <a href="/faq" className="underline-offset-4 hover:underline">
+              Questions
+            </a>
+            <span className="mx-2 text-ink/25" aria-hidden>
+              ·
+            </span>
             <a href={directorsLink.href} className="underline-offset-4 hover:underline">
               {directorsLink.label}
             </a>
