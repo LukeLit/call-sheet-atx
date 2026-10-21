@@ -5,7 +5,7 @@ The programs Open Call knows about. Muse talks about these and nothing else. **I
 ## Where it lives
 - **Starter list:** `src/data/programs.json` in the repo. One source for everything below.
 - **Table:** `public.programs` in Supabase (`supabase/001_programs.sql`), seeded by `supabase/002_seed_programs.sql`, which `pnpm seed:sql` writes from the JSON.
-- **Which one is used:** if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set, the table; otherwise the JSON, read-only. An empty table falls back to the JSON. The service key is server-only. RLS is on with no policies.
+- **Which one is used:** if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (or `SUPABASE_SECRET_KEY`) are set, the table; otherwise the JSON, read-only. An empty table falls back to the JSON. The service key is server-only. RLS is on with no policies.
 - **Code:** `src/lib/programs/` (`types.ts`, `status.ts`, `prompt.ts`, `store.ts`).
 
 ## A row
@@ -33,6 +33,6 @@ The programs Open Call knows about. Muse talks about these and nothing else. **I
 All were taken from the first starter list, written 2026-08-15. None has been re-checked since.
 
 ## Adding or verifying
-1. Add the row to `src/data/programs.json`, run `pnpm seed:sql`, run the new SQL in Supabase.
+1. Add the row to `src/data/programs.json`, run `pnpm seed:sql` (rewrites `supabase/002_seed_programs.sql` and the one-paste `supabase/setup.sql`), run the new SQL in Supabase. The first time, paste all of `supabase/setup.sql` into the Supabase SQL editor.
 2. To mark a row checked: `/admin` has an "I checked it today" button when the database is connected.
 3. Update this page's table and [[Changelog]].

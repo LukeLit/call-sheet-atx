@@ -2,7 +2,7 @@ import seed from "@/data/programs.json";
 import type { Program } from "./types";
 
 /**
- * Where the programs live. With SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY set, the `programs` table
+ * Where the programs live. With SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (or SUPABASE_SECRET_KEY) set, the `programs` table
  * (supabase/001_programs.sql) is the source of truth and the ops desk can verify rows from /admin.
  * Without them the starter list in src/data/programs.json is served, read-only, so the site never
  * depends on the database being there. The key is server-only: never expose it to the browser.
@@ -13,7 +13,8 @@ const seedPrograms = seed as Program[];
 
 function config(): { url: string; key: string } | null {
   const url = process.env.SUPABASE_URL?.trim().replace(/\/+$/, "");
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  // The Vercel integration sets both: the legacy service role key (a JWT) and the newer secret key
+  const key = (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY)?.trim();
   return url && key ? { url, key } : null;
 }
 
@@ -22,7 +23,9 @@ export function canWritePrograms(): boolean {
 }
 
 function headers(key: string, extra?: Record<string, string>): Record<string, string> {
-  return { apikey: key, Authorization: `Bearer ${key}`, ...extra };
+  // The legacy key is a JWT and also goes in Authorization; the newer sb_secret_ key is not a JWT and
+  // goes in apikey alone
+  return { apikey: key, ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}), ...extra };
 }
 
 export async function readPrograms(): Promise<{ programs: Program[]; source: ProgramSource }> {
