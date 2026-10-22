@@ -3,7 +3,7 @@
 The assistant in the drawer. Route: `POST /api/muse` (`src/app/api/muse/route.ts`).
 
 ## How an answer is made
-1. The system prompt is the knowledge in `src/lib/muse/knowledge.ts` (who Open Call is, what it does and doesn't, voice) plus a **PROGRAMS block** built per request from [[Programs database]] (`src/lib/programs/prompt.ts`): today's date, each program's status worked out now, its official link, and when it was last checked (with a STALE flag past 90 days).
+1. The system prompt is the knowledge in `src/lib/muse/knowledge.ts` (who Open Call is, what it does and doesn't, voice) plus a **PROGRAMS block** built per request from [[Programs database]] (`src/lib/programs/prompt.ts`): today's date, each program's status worked out now, its official link, and when it was last checked (with a STALE flag past 90 days). A date that does not parse is not a window, so a bad close does not come out as open. A `who` value that is not a list of lines is left off the block instead of failing the request. The programs fetch gives up after 10 seconds. A page that says the table has more rows than it returned is not used; the starter list is. A one-row reply that does not say the table is larger is that table.
 2. The model chain is tried in order and falls back on a 404, 402, 408, 429 or 5xx: `poolside/laguna-s-2.1-free`, `nvidia/nemotron-3.5-lightning-free`, `alibaba/qwen3.7-flash`, `inclusionai/ling-3.0-flash` (through the Vercel AI Gateway; `/admin` can change the chain).
 3. Needs `AI_GATEWAY_API_KEY` (an environment variable, never committed).
 

@@ -5,18 +5,37 @@ const when = (iso: string) =>
   new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", dateStyle: "long", timeStyle: "short" }).format(new Date(iso));
 
 function statusLine(p: Program, now: Date): string {
-  switch (programStatus(p, now)) {
+  const status = programStatus(p, now);
+  switch (status) {
     case "closed":
       return `closed (it closed ${when(p.closes as string)})`;
     case "upcoming":
       return `not open yet (opens ${when(p.opens as string)})`;
-    case "open":
-      return p.closes ? `open now, until ${when(p.closes)}` : "open now";
+    case "open": {
+      const closes = typeof p.closes === "string" ? new Date(p.closes).getTime() : Number.NaN;
+      return Number.isFinite(closes) ? `open now, until ${when(p.closes as string)}` : "open now";
+    }
     case "rolling":
       return "no cycle: people can join or ask any time";
-    default:
+    case "unknown":
       return "dates not on file: send people to the official page";
+    default: {
+      const unreachable: never = status;
+      return unreachable;
+    }
   }
+}
+
+/** Who-lines for the prompt. A string is one line. Anything else is omitted, so a bad value cannot throw. */
+export function whoLine(who: unknown): string {
+  const lines = Array.isArray(who)
+    ? who.filter((line): line is string => typeof line === "string" && line.trim().length > 0)
+    : typeof who === "string" && who.trim()
+      ? [who.trim()]
+      : [];
+  return lines.length
+    ? `  Who (the official page's wording; never say someone is eligible): ${lines.join("; ")}`
+    : "";
 }
 
 /** One program as plain text for Muse. Status and age are worked out now, not stored. */
@@ -25,7 +44,7 @@ export function renderProgram(p: Program, now: Date = new Date()): string {
   const lines = [
     `- ${p.name} [${p.kind}, ${p.region}] STATUS: ${statusLine(p, now)}`,
     `  What: ${p.summary}`,
-    p.who.length ? `  Who (the official page's wording; never say someone is eligible): ${p.who.join("; ")}` : "",
+    whoLine(p.who),
     p.amount ? `  Amount: ${p.amount}` : "",
     p.timing_note ? `  Timing: ${p.timing_note}` : "",
     p.how_to_apply ? `  How to apply: ${p.how_to_apply}` : "",

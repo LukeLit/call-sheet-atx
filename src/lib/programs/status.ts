@@ -6,11 +6,17 @@ export const STALE_AFTER_DAYS = 90;
 /**
  * Where the program stands right now, worked out from its dates, never stored. Only a dated window
  * or a rolling program gets a verdict; everything else is "unknown" and sends people to the
- * official page.
+ * official page. A timestamp that does not parse is not a window, so a bad close does not look open.
  */
+function parsedInstant(value: unknown): number | null {
+  if (typeof value !== "string" || value.trim() === "") return null;
+  const t = new Date(value).getTime();
+  return Number.isFinite(t) ? t : null;
+}
+
 export function programStatus(p: Program, now: Date = new Date()): ProgramStatus {
-  const opens = p.opens ? new Date(p.opens).getTime() : null;
-  const closes = p.closes ? new Date(p.closes).getTime() : null;
+  const opens = parsedInstant(p.opens);
+  const closes = parsedInstant(p.closes);
   const t = now.getTime();
   if (closes !== null && t > closes) return "closed";
   if (opens !== null && t < opens) return "upcoming";
