@@ -1,4 +1,4 @@
-import seed from "@/data/programs.json";
+import seed from "@/data/programs.json" with { type: "json" };
 import type { Program } from "./types";
 
 /**
@@ -11,6 +11,9 @@ export type ProgramSource = "supabase" | "seed";
 
 const seedPrograms = seed as Program[];
 
+/** Give up on a hung programs host and let the starter list answer. Shorter than the function's maxDuration. */
+export const PROGRAMS_FETCH_TIMEOUT_MS = 10_000;
+
 function config(): { url: string; key: string } | null {
   const url = process.env.SUPABASE_URL?.trim().replace(/\/+$/, "");
   // The Vercel integration sets both: the legacy service role key (a JWT) and the newer secret key
@@ -20,6 +23,13 @@ function config(): { url: string; key: string } | null {
 
 export function canWritePrograms(): boolean {
   return config() !== null;
+}
+
+/** PostgREST `Content-Range` total (`0-0/9` → 9). `*` and a missing header are an unknown total. */
+export function contentRangeTotal(header: string | null): number | null {
+  if (!header) return null;
+  const match = /\/(\d+)\s*$/.exec(header);
+  return match ? Number(match[1]) : null;
 }
 
 function headers(key: string, extra?: Record<string, string>): Record<string, string> {
@@ -33,13 +43,20 @@ export async function readPrograms(): Promise<{ programs: Program[]; source: Pro
   if (!c) return { programs: seedPrograms, source: "seed" };
   try {
     const res = await fetch(`${c.url}/rest/v1/programs?select=*&order=name.asc`, {
-      headers: headers(c.key),
+      headers: headers(c.key, { Prefer: "count=exact" }),
       cache: "no-store",
+      signal: AbortSignal.timeout(PROGRAMS_FETCH_TIMEOUT_MS),
     });
     if (!res.ok) throw new Error(`Supabase ${res.status}`);
     const rows = (await res.json()) as Program[];
     // An empty table is not "no programs": it is a database nobody has seeded yet
     if (!Array.isArray(rows) || rows.length === 0) throw new Error("programs table is empty");
+    // A page that says the table is larger is not the catalog. A one-row 200 with no larger
+    // total is the whole table (check 9): do not backfill the starter list over it.
+    const total = contentRangeTotal(res.headers.get("content-range"));
+    if (total !== null && rows.length < total) {
+      throw new Error(`programs page is short of the table (${rows.length}/${total})`);
+    }
     return { programs: rows, source: "supabase" };
   } catch (error) {
     console.warn("[programs] database read failed, serving the starter list", error);

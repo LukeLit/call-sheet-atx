@@ -5,7 +5,7 @@ The programs Open Call knows about. Muse talks about these and nothing else. **I
 ## Where it lives
 - **Starter list:** `src/data/programs.json` in the repo. One source for everything below.
 - **Table:** `public.programs` in Supabase (`supabase/001_programs.sql`), seeded by `supabase/002_seed_programs.sql`, which `pnpm seed:sql` writes from the JSON.
-- **Which one is used:** if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (or `SUPABASE_SECRET_KEY`) are set, the table; otherwise the JSON, read-only. An empty table falls back to the JSON. The service key is server-only. RLS is on with no policies.
+- **Which one is used:** if `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (or `SUPABASE_SECRET_KEY`) are set, the table; otherwise the JSON, read-only. An empty table falls back to the JSON. So does a failed read, a fetch still going after 10 seconds, and a page whose `Content-Range` total is larger than the rows returned. A one-row reply with no larger total is that table. The service key is tried once: a rejected JWT is not retried as `SUPABASE_SECRET_KEY`. The service key is server-only. RLS is on with no policies. A close that does not parse is not called open.
 - **Code:** `src/lib/programs/` (`types.ts`, `status.ts`, `prompt.ts`, `store.ts`).
 
 ## A row

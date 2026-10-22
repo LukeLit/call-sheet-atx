@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --experimental-strip-types --import ./scripts/run-tests.mjs --test src/lib/programs/read.test.ts",
     "seed:sql": "node scripts/seed-sql.mjs"
   },
   "dependencies": {
